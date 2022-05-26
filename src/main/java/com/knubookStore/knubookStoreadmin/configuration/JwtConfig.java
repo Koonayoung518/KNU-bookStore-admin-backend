@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-@PropertySource("classpath:/secrets/jwt-secrets.properties")
+@PropertySource("classpath:/secret/jwt-secrets.properties")
 @Configuration
 public class JwtConfig {
     @Value("${jwt.secret}")

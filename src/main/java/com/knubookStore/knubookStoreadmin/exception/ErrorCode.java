@@ -7,7 +7,8 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
     AUTHENTICATION_FAILED(HttpStatus.UNAUTHORIZED, "AUTH_001", " AUTHENTICATION_FAILED."),
     AUTHENTICATION_CONFLICT(HttpStatus.CONFLICT, "AUTH_002","AUTHENTICATION_CONFLICT."),
-    NOT_FOUND_ADMIN(HttpStatus.NOT_FOUND, "AUTH_003","NOT_FOUND_ADMIN");
+    NOT_FOUND_ADMIN(HttpStatus.NOT_FOUND, "AUTH_003","NOT_FOUND_ADMIN"),
+    NOT_FOUND_BOOK(HttpStatus.NOT_FOUND, "BOOK_001","NOT_FOUND_BOOK");
 
     private final HttpStatus httpStatus;
     private final String code;
