@@ -50,6 +50,9 @@ public class Book {
         this.image = image;
         this.pubdate = pubdate;
         this.stock =stock;
-
+    }
+    public void updateBookInfo(Integer price, Integer stock){
+        this.price = price;
+        this.stock = stock;
     }
 }

@@ -2,6 +2,7 @@ package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
+import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Connection;
@@ -75,7 +76,24 @@ public class BookService {
 
         return responseBook;
     }
-
+    @Transactional
+    public void registerBook(RequestBook.registerBook requestBook){
+        Book book = bookRepository.findByIsbn(requestBook.getIsbn());
+        if(book != null){ //이미 재고가 있는 책일 경우 -입고 시 달라질 가격과 수량만 변경
+            book.updateBookInfo(requestBook.getPrice(), requestBook.getStock());
+        }
+        book = Book.builder()
+                .isbn(requestBook.getIsbn())
+                .title(requestBook.getTitle())
+                .publisher(requestBook.getPublisher())
+                .author(requestBook.getAuthor())
+                .price(requestBook.getPrice())
+                .image(requestBook.getImage())
+                .pubdate(requestBook.getPubdate())
+                .stock(requestBook.getStock())
+                .build();
+        bookRepository.save(book);
+    }
 }
 
 
