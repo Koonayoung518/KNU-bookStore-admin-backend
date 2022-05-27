@@ -1,5 +1,6 @@
 package com.knubookStore.knubookStoreadmin.web;
 
+import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
 import com.knubookStore.knubookStoreadmin.provider.service.BookService;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
@@ -58,5 +59,15 @@ public class BookController {
                 .message("책 등록 성공")
                 .build(), HttpStatus.OK);
     }
+    //판매
+    @GetMapping("/sell/book/{isbn}")
+    public ResponseEntity<ResponseMessage> sellBook(@PathVariable(name = "isbn") String isbn){
+        ResponseBook.sellBook book = bookService.sellBook(isbn).orElseThrow(()-> new NotFoundBookException());
 
+        return new ResponseEntity<>(ResponseMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("책 조회 성공")
+                .list(book)
+                .build(), HttpStatus.OK);
+    }
 }

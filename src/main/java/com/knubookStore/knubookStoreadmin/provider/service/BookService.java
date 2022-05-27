@@ -112,6 +112,20 @@ public class BookService {
         bookRepository.delete(book);
     }
 
+    //판매
+    @Transactional
+    public Optional<ResponseBook.sellBook> sellBook(String isbn){
+        Book book = bookRepository.findByIsbn(isbn);
+        if(book == null){// 책이 없을 경우
+            throw new NotFoundBookException();
+        }
+        ResponseBook.sellBook response = ResponseBook.sellBook.builder()
+                .isbn(book.getIsbn())
+                .title(book.getTitle())
+                .price(book.getPrice())
+                .build();
+        return Optional.ofNullable(response);
+    }
 
 }
 

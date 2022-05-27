@@ -32,4 +32,11 @@ public class ResponseBook {
                     .build();
         }
     }
+    @Builder
+    @Data
+    public static class sellBook{
+        private String isbn;
+        private String title;
+        private Integer price;
+    }
 }
