@@ -1,18 +1,17 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.entity.Book;
+import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import lombok.RequiredArgsConstructor;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.io.*;
@@ -103,6 +102,17 @@ public class BookService {
                 .build();
         bookRepository.save(book);
     }
+
+    @Transactional
+    public void deleteBook(String isbn){
+        Book book = bookRepository.findByIsbn(isbn);
+        if(book == null){// 책이 없을 경우
+            throw new NotFoundBookException();
+        }
+        bookRepository.delete(book);
+    }
+
+
 }
 
 

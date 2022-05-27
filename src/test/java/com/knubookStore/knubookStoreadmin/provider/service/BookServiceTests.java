@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 public class BookServiceTests {
@@ -60,5 +61,22 @@ public class BookServiceTests {
         Pageable pageable = PageRequest.of(0,3);
         Page<ResponseBook.getBook> getBook = bookService.getAllBook(pageable);
         System.out.println(getBook.getTotalElements());
+    }
+
+    @Test
+    @DisplayName("책 삭제 테스트")
+    @Transactional
+    void deleteBookTest(){
+        Book book = Book.builder()
+                .isbn("9788965402602")
+                .build();
+        bookRepository.save(book);
+        Book book1 = Book.builder()
+                .isbn("9788960777330")
+                .build();
+        bookRepository.save(book1);
+        //페이지 설정
+        bookService.deleteBook("9788960777330");
+        assertNull(bookRepository.findByIsbn("9788960777330"));
     }
 }

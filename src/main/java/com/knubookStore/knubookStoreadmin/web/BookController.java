@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     private final BookService bookService;
 
-    @GetMapping("/admin/book/{isbn}")
+    //책 관리
+    @GetMapping("/manage/book/{isbn}")
     public ResponseEntity<ResponseMessage> getBook(@PathVariable(name = "isbn") String isbn){
     ResponseBook.getBook book = bookService.getBook(isbn);
 
@@ -28,7 +29,7 @@ public class BookController {
                 .list(book)
                 .build(), HttpStatus.OK);
     }
-    @GetMapping("/admin/book")
+    @GetMapping("/manage/book")
     public ResponseEntity<ResponseMessage> getAllBook(@PageableDefault Pageable pageable){
         Page<ResponseBook.getBook> book = bookService.getAllBook(pageable);
 
@@ -38,8 +39,17 @@ public class BookController {
                 .list(book)
                 .build(), HttpStatus.OK);
     }
+    @DeleteMapping("/manage/book/{isbn}")
+    public ResponseEntity<ResponseMessage> deleteBook(@PathVariable(name = "isbn") String isbn){
+        bookService.deleteBook(isbn);
 
-    @PostMapping("/admin/book")
+        return new ResponseEntity<>(ResponseMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("책 삭제 성공")
+                .build(), HttpStatus.OK);
+    }
+
+    @PostMapping("/manage/book")
     public ResponseEntity<ResponseMessage> registerBook(@RequestBody RequestBook.registerBook requestDto){
         bookService.registerBook(requestDto);
 
@@ -48,4 +58,5 @@ public class BookController {
                 .message("책 등록 성공")
                 .build(), HttpStatus.OK);
     }
+
 }
