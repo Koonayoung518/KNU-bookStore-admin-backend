@@ -10,6 +10,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,6 +78,13 @@ public class BookService {
 
         return responseBook;
     }
+
+    @Transactional
+    public Page<ResponseBook.getBook> getAllBook(Pageable pageable){
+      Page<Book> books =  bookRepository.findAll(pageable);
+        return books.map(ResponseBook.getBook::of);
+    }
+
     @Transactional
     public void registerBook(RequestBook.registerBook requestBook){
         Book book = bookRepository.findByIsbn(requestBook.getIsbn());

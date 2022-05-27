@@ -1,5 +1,6 @@
 package com.knubookStore.knubookStoreadmin.web.dto;
 
+import com.knubookStore.knubookStoreadmin.entity.Book;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,5 +18,18 @@ public class ResponseBook {
         private String image;
         private String pubdate;
         private Integer stock;
+
+        public static getBook of(Book book){
+            return getBook.builder()
+                    .isbn(book.getIsbn())
+                    .title(book.getTitle())
+                    .publisher(book.getPublisher())
+                    .author(book.getAuthor())
+                    .price(book.getPrice())
+                    .image(book.getImage())
+                    .pubdate(book.getPubdate())
+                    .stock(book.getStock())
+                    .build();
+        }
     }
 }
