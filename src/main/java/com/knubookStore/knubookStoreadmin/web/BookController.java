@@ -19,6 +19,16 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
     private final BookService bookService;
 
+    @GetMapping("/knu/book")
+    public ResponseEntity<ResponseMessage> getAllBook(@PageableDefault Pageable pageable){
+        Page<ResponseBook.getBook> book = bookService.getAllBook(pageable);
+
+        return new ResponseEntity<>(ResponseMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("등록된 전체 책 조회 성공")
+                .list(book)
+                .build(), HttpStatus.OK);
+    }
     //책 관리
     @GetMapping("/manage/book/{isbn}")
     public ResponseEntity<ResponseMessage> getBook(@PathVariable(name = "isbn") String isbn){
@@ -30,16 +40,7 @@ public class BookController {
                 .list(book)
                 .build(), HttpStatus.OK);
     }
-    @GetMapping("/manage/book")
-    public ResponseEntity<ResponseMessage> getAllBook(@PageableDefault Pageable pageable){
-        Page<ResponseBook.getBook> book = bookService.getAllBook(pageable);
 
-        return new ResponseEntity<>(ResponseMessage.builder()
-                .status(HttpStatus.OK.value())
-                .message("등록된 전체 책 조회 성공")
-                .list(book)
-                .build(), HttpStatus.OK);
-    }
     @DeleteMapping("/manage/book/{isbn}")
     public ResponseEntity<ResponseMessage> deleteBook(@PathVariable(name = "isbn") String isbn){
         bookService.deleteBook(isbn);
@@ -61,7 +62,7 @@ public class BookController {
     }
     //판매
     @GetMapping("/sell/book/{isbn}")
-    public ResponseEntity<ResponseMessage> sellBook(@PathVariable(name = "isbn") String isbn){
+    public ResponseEntity<ResponseMessage> getSellBook(@PathVariable(name = "isbn") String isbn){
         ResponseBook.sellBook book = bookService.sellBook(isbn).orElseThrow(()-> new NotFoundBookException());
 
         return new ResponseEntity<>(ResponseMessage.builder()
@@ -70,4 +71,5 @@ public class BookController {
                 .list(book)
                 .build(), HttpStatus.OK);
     }
+
 }

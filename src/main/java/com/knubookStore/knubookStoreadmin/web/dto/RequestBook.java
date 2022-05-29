@@ -16,4 +16,13 @@ public class RequestBook {
         private String pubdate;
         private Integer stock;
     }
+
+    @Builder
+    @Data
+    public static class sellBook{
+        private String isbn;
+        private String title;
+        private Integer price;
+
+    }
 }
