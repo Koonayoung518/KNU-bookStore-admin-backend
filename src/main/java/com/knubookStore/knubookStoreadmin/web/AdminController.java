@@ -30,13 +30,13 @@ public class AdminController {
                 .build(), HttpStatus.OK);
     }
 
-    @PostMapping("/user/login")
+    @PostMapping("/admin/login")
     public ResponseEntity<ResponseMessage> login(@Validated @RequestBody RequestAdmin.Admin requestDto){
         ResponseAdmin.Token tokens = adminService.login(requestDto).orElseThrow(()->new NotFoundAdminException());
 
         return new ResponseEntity<>(ResponseMessage.builder()
                 .status(HttpStatus.OK.value())
-                .message("로그인 성공")
+                .message("관리자 로그인 성공")
                 .list(tokens)
                 .build(), HttpStatus.OK);
     }

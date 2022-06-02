@@ -38,7 +38,8 @@ public class AdminService {
 
         admin = Admin.builder()
                 .userId(requestDto.getUserId())
-                .password(requestDto.getPassword())
+                .password(encryptedPassword)
+                .salt(salt)
                 .build();
         adminRepository.save(admin);
     }

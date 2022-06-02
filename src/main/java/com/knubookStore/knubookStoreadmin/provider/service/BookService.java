@@ -61,8 +61,9 @@ public class BookService {
             org.jsoup.nodes.Document doc = Jsoup.connect(url).headers(requestHeaders).get();
             Iterator<org.jsoup.nodes.Element> rows = doc.select("item").iterator();
             Element item = rows.next();
+            String[] isbnList =  item.select("isbn").text().split(" ");
             responseBook = ResponseBook.getBook.builder()
-                    .isbn(item.select("isbn").text())
+                    .isbn(isbnList[1])
                     .title(item.select("title").text())
                     .publisher(item.select("publisher").text())
                     .author(item.select("author").text())

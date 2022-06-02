@@ -15,7 +15,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     private final AuthInterceptor authInterceptor;
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        List<String> excludePatterns = Arrays.asList("/admin/**");
+        List<String> excludePatterns = Arrays.asList("/admin/**", "/manage/**","/knu/**","/sell/**");
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(excludePatterns);

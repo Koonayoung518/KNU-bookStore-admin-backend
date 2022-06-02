@@ -71,5 +71,8 @@ public class BookController {
                 .list(book)
                 .build(), HttpStatus.OK);
     }
-
+    @GetMapping("/dev")
+    public String dev(){
+        return "Hello world!";
+    }
 }
