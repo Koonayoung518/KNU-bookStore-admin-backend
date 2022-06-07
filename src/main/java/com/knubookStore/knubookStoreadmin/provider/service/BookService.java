@@ -80,9 +80,23 @@ public class BookService {
     }
 
     @Transactional
-    public Page<ResponseBook.getBook> getAllBook(Pageable pageable){
-      Page<Book> books =  bookRepository.findAll(pageable);
-        return books.map(ResponseBook.getBook::of);
+    public List<ResponseBook.getBook> getAllBook(){
+        List<ResponseBook.getBook> list = new ArrayList<>();
+      List<Book> books =  bookRepository.findAll();
+      for(Book book : books){
+          ResponseBook.getBook responseBook = ResponseBook.getBook.builder()
+                  .isbn(book.getIsbn())
+                  .title(book.getTitle())
+                  .publisher(book.getPublisher())
+                  .author(book.getAuthor())
+                  .price(book.getPrice())
+                  .image(book.getImage())
+                  .pubdate(book.getPubdate())
+                  .stock(book.getStock())
+                  .build();
+          list.add(responseBook);
+      }
+        return list;
     }
 
     @Transactional
@@ -90,6 +104,7 @@ public class BookService {
         Book book = bookRepository.findByIsbn(requestBook.getIsbn());
         if(book != null){ //이미 재고가 있는 책일 경우 -입고 시 달라질 가격과 수량만 변경
             book.updateBookInfo(requestBook.getPrice(), requestBook.getStock());
+            return;
         }
         book = Book.builder()
                 .isbn(requestBook.getIsbn())

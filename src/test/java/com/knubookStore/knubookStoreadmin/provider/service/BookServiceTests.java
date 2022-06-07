@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -57,10 +59,8 @@ public class BookServiceTests {
                 .isbn("9788960777330")
                 .build();
         bookRepository.save(book1);
-        //페이지 설정
-        Pageable pageable = PageRequest.of(0,3);
-        Page<ResponseBook.getBook> getBook = bookService.getAllBook(pageable);
-        System.out.println(getBook.getTotalElements());
+        List<ResponseBook.getBook> getBook = bookService.getAllBook();
+        System.out.println(getBook);
     }
 
     @Test

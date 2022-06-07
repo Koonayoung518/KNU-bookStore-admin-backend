@@ -6,12 +6,11 @@ import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseMessage;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -20,9 +19,8 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/knu/book")
-    public ResponseEntity<ResponseMessage> getAllBook(@PageableDefault Pageable pageable){
-        Page<ResponseBook.getBook> book = bookService.getAllBook(pageable);
-
+    public ResponseEntity<ResponseMessage> getAllBook(){
+        List<ResponseBook.getBook> book = bookService.getAllBook();
         return new ResponseEntity<>(ResponseMessage.builder()
                 .status(HttpStatus.OK.value())
                 .message("등록된 전체 책 조회 성공")
@@ -73,6 +71,7 @@ public class BookController {
     }
     @GetMapping("/dev")
     public String dev(){
+        System.out.println("dev 실행");
         return "Hello world!";
     }
 }
