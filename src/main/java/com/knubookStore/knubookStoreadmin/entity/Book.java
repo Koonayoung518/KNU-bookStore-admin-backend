@@ -1,5 +1,6 @@
 package com.knubookStore.knubookStoreadmin.entity;
 
+import com.knubookStore.knubookStoreadmin.core.Type.BookType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,9 +40,13 @@ public class Book {
     @Column(name = "stock")
     private Integer stock; //재고
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    private BookType type;
+
     @Builder
     public Book(String isbn, String title, String publisher, String author, Integer price, String image,
-                String pubdate, Integer stock){
+                String pubdate, Integer stock, BookType type){
         this.isbn = isbn;
         this.title = title;
         this.publisher = publisher;
@@ -50,6 +55,7 @@ public class Book {
         this.image = image;
         this.pubdate = pubdate;
         this.stock =stock;
+        this.type = type;
     }
     public void updateBookInfo(Integer price, Integer stock){
         this.price = price;

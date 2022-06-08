@@ -18,16 +18,17 @@ import java.util.List;
 public class BookController {
     private final BookService bookService;
 
-    @GetMapping("/knu/book")
+    //책 관리
+    @GetMapping("/manage/book")
     public ResponseEntity<ResponseMessage> getAllBook(){
         List<ResponseBook.getBook> book = bookService.getAllBook();
         return new ResponseEntity<>(ResponseMessage.builder()
                 .status(HttpStatus.OK.value())
-                .message("등록된 전체 책 조회 성공")
+                .message("등록된 책 전체 조회 성공")
                 .list(book)
                 .build(), HttpStatus.OK);
     }
-    //책 관리
+
     @GetMapping("/manage/book/{isbn}")
     public ResponseEntity<ResponseMessage> getBook(@PathVariable(name = "isbn") String isbn){
     ResponseBook.getBook book = bookService.getBook(isbn);
@@ -49,13 +50,22 @@ public class BookController {
                 .build(), HttpStatus.OK);
     }
 
-    @PostMapping("/manage/book")
+    @PostMapping("/manage/register/book")
     public ResponseEntity<ResponseMessage> registerBook(@RequestBody RequestBook.registerBook requestDto){
         bookService.registerBook(requestDto);
 
         return new ResponseEntity<>(ResponseMessage.builder()
                 .status(HttpStatus.OK.value())
                 .message("책 등록 성공")
+                .build(), HttpStatus.OK);
+    }
+    @PostMapping("/manage/update/book")
+    public ResponseEntity<ResponseMessage> updateBook(@RequestBody RequestBook.updateBook requestDto){
+        bookService.updateBook(requestDto);
+
+        return new ResponseEntity<>(ResponseMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("책 수정 성공")
                 .build(), HttpStatus.OK);
     }
     //판매
@@ -65,10 +75,11 @@ public class BookController {
 
         return new ResponseEntity<>(ResponseMessage.builder()
                 .status(HttpStatus.OK.value())
-                .message("책 조회 성공")
+                .message("판매할 책 조회 성공")
                 .list(book)
                 .build(), HttpStatus.OK);
     }
+
     @GetMapping("/dev")
     public String dev(){
         System.out.println("dev 실행");

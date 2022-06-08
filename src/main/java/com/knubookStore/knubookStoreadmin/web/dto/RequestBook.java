@@ -1,5 +1,6 @@
 package com.knubookStore.knubookStoreadmin.web.dto;
 
+import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,6 +15,14 @@ public class RequestBook {
         private Integer price;
         private String image;
         private String pubdate;
+        private Integer stock;
+    }
+
+    @Builder
+    @Data
+    public static class updateBook{
+        private String isbn;
+        private Integer price;
         private Integer stock;
     }
 

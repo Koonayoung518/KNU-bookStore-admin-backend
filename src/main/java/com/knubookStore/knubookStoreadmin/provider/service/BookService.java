@@ -1,6 +1,8 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
+import com.knubookStore.knubookStoreadmin.core.Type.BookType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
+import com.knubookStore.knubookStoreadmin.exception.errors.BookDuplicatedException;
 import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
@@ -10,8 +12,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.io.*;
@@ -43,6 +43,7 @@ public class BookService {
                     .image(book.getImage())
                     .pubdate(book.getPubdate())
                     .stock(book.getStock())
+                    .bookType(book.getType())
                     .build();
             return responseBook;
         }
@@ -71,6 +72,7 @@ public class BookService {
                     .image(item.select("image").text())
                     .pubdate(item.select("pubdate").text())
                     .stock(0)
+                    .bookType(BookType.UnRegistered)
                     .build();
         }catch (IOException e){
             System.out.println("파싱 실패");
@@ -102,9 +104,8 @@ public class BookService {
     @Transactional
     public void registerBook(RequestBook.registerBook requestBook){
         Book book = bookRepository.findByIsbn(requestBook.getIsbn());
-        if(book != null){ //이미 재고가 있는 책일 경우 -입고 시 달라질 가격과 수량만 변경
-            book.updateBookInfo(requestBook.getPrice(), requestBook.getStock());
-            return;
+        if(book != null){ //이미 재고가 있는 책일 경우
+            throw new BookDuplicatedException();
         }
         book = Book.builder()
                 .isbn(requestBook.getIsbn())
@@ -115,8 +116,18 @@ public class BookService {
                 .image(requestBook.getImage())
                 .pubdate(requestBook.getPubdate())
                 .stock(requestBook.getStock())
+                .type(BookType.Registered)
                 .build();
         bookRepository.save(book);
+    }
+
+    @Transactional
+    public void updateBook(RequestBook.updateBook updateBook){
+        Book book = bookRepository.findByIsbn(updateBook.getIsbn());
+        if(book == null){//해당하는 책이 없을 경우
+            throw new NotFoundBookException();
+        }
+        book.updateBookInfo(updateBook.getPrice(), updateBook.getStock());
     }
 
     @Transactional

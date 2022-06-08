@@ -1,5 +1,6 @@
 package com.knubookStore.knubookStoreadmin.web.dto;
 
+import com.knubookStore.knubookStoreadmin.core.Type.BookType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class ResponseBook {
         private String image;
         private String pubdate;
         private Integer stock;
+        private BookType bookType;
 
         public static getBook of(Book book){
             return getBook.builder()
