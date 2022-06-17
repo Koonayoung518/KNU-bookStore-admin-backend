@@ -61,4 +61,7 @@ public class Book {
         this.price = price;
         this.stock = stock;
     }
+    public void updateStock(Integer stock){
+        this.stock = stock;
+    }
 }

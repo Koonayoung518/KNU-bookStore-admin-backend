@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 public class RequestBook {
     @Builder
     @Data
@@ -29,9 +31,8 @@ public class RequestBook {
     @Builder
     @Data
     public static class sellBook{
-        private String isbn;
-        private String title;
-        private Integer price;
-
+        private List<BookInfo> bookList;
+        private Integer totalPrice;
+        private String payment; //결제 수단
     }
 }

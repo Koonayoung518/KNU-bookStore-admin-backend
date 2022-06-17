@@ -1,10 +1,17 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.core.Type.BookType;
+import com.knubookStore.knubookStoreadmin.core.Type.PaymentType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
+import com.knubookStore.knubookStoreadmin.entity.History;
+import com.knubookStore.knubookStoreadmin.entity.Sell;
 import com.knubookStore.knubookStoreadmin.exception.errors.BookDuplicatedException;
 import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
+import com.knubookStore.knubookStoreadmin.exception.errors.SellFailedException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
+import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
+import com.knubookStore.knubookStoreadmin.repository.SellRepository;
+import com.knubookStore.knubookStoreadmin.web.dto.BookInfo;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +30,9 @@ import java.util.*;
 @PropertySource("classpath:/secret/api-key.properties")
 public class BookService {
     private final BookRepository bookRepository;
+    private final HistoryRepository historyRepository;
+    private final SellRepository sellRepository;
+
     @Value("${api.id}")
     private String clientId;
     @Value("${api.secret}")
@@ -95,6 +105,7 @@ public class BookService {
                   .image(book.getImage())
                   .pubdate(book.getPubdate())
                   .stock(book.getStock())
+                  .bookType(book.getType())
                   .build();
           list.add(responseBook);
       }
@@ -141,7 +152,7 @@ public class BookService {
 
     //판매
     @Transactional
-    public Optional<ResponseBook.sellBook> sellBook(String isbn){
+    public Optional<ResponseBook.sellBook> getSellBook(String isbn){
         Book book = bookRepository.findByIsbn(isbn);
         if(book == null){// 책이 없을 경우
             throw new NotFoundBookException();
@@ -153,7 +164,36 @@ public class BookService {
                 .build();
         return Optional.ofNullable(response);
     }
+    public void sellBook(RequestBook.sellBook requestDto){
+        if(requestDto.getBookList().isEmpty()){
+            throw new SellFailedException();
+        }
+        History history = History.builder()
+                .totalPrice(requestDto.getTotalPrice())
+                .payment(PaymentType.valueOf(requestDto.getPayment()))
+                .build();
+        history = historyRepository.save(history);
 
+        for (BookInfo bookInfo : requestDto.getBookList()){
+            Book book = bookRepository.findByIsbn(bookInfo.getIsbn());
+            if(book == null){// 책이 없을 경우
+                throw new NotFoundBookException();
+            }
+            //책 수량 변경
+            book.updateStock(book.getStock() - bookInfo.getAmount());
+            //판매내역 저장
+            Sell sell = Sell.builder()
+                    .isbn(bookInfo.getIsbn())
+                    .unitPrice(bookInfo.getUnitPrice())
+                    .amount(bookInfo.getAmount())
+                    .price(bookInfo.getPrice())
+                    .history(history)
+                    .build();
+            sell = sellRepository.save(sell);
+            history.addSell(sell);
+        }
+
+    }
 }
 
 

@@ -30,9 +30,8 @@ public class BookController {
     }
 
     @GetMapping("/manage/book/{isbn}")
-    public ResponseEntity<ResponseMessage> getBook(@PathVariable(name = "isbn") String isbn){
+    public ResponseEntity<ResponseMessage> getBook(@PathVariable String isbn){
     ResponseBook.getBook book = bookService.getBook(isbn);
-
     return new ResponseEntity<>(ResponseMessage.builder()
                 .status(HttpStatus.OK.value())
                 .message("책 조회 성공")
@@ -71,7 +70,7 @@ public class BookController {
     //판매
     @GetMapping("/sell/book/{isbn}")
     public ResponseEntity<ResponseMessage> getSellBook(@PathVariable(name = "isbn") String isbn){
-        ResponseBook.sellBook book = bookService.sellBook(isbn).orElseThrow(()-> new NotFoundBookException());
+        ResponseBook.sellBook book = bookService.getSellBook(isbn).orElseThrow(()-> new NotFoundBookException());
 
         return new ResponseEntity<>(ResponseMessage.builder()
                 .status(HttpStatus.OK.value())
@@ -79,6 +78,16 @@ public class BookController {
                 .list(book)
                 .build(), HttpStatus.OK);
     }
+    @PostMapping("sell/book")
+    public ResponseEntity<ResponseMessage> sellBook(@RequestBody RequestBook.sellBook requestDto){
+        bookService.sellBook(requestDto);
+
+        return new ResponseEntity<>(ResponseMessage.builder()
+                .status(HttpStatus.OK.value())
+                .message("책 판매 내역 저장 성공")
+                .build(), HttpStatus.OK);
+    }
+
 
     @GetMapping("/dev")
     public String dev(){
