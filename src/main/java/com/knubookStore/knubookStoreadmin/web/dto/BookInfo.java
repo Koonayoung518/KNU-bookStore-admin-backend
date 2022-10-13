@@ -7,7 +7,8 @@ import lombok.Data;
 @Data
 public class BookInfo {
     private String isbn;
+    private String title;
     private Integer unitPrice;
     private Integer amount; //수량
-    private Integer price;
+    private Integer total;
 }

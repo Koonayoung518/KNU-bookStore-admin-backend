@@ -4,13 +4,12 @@ import com.knubookStore.knubookStoreadmin.core.Type.BookType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import lombok.Builder;
 import lombok.Data;
-
-import javax.persistence.Column;
+import lombok.Getter;
 
 public class ResponseBook {
     @Builder
-    @Data
-    public static class getBook{
+    @Getter
+    public static class BookDto{
         private String isbn;
         private String title;
         private String publisher;
@@ -21,8 +20,8 @@ public class ResponseBook {
         private Integer stock;
         private BookType bookType;
 
-        public static getBook of(Book book){
-            return getBook.builder()
+        public static BookDto of(Book book){
+            return BookDto.builder()
                     .isbn(book.getIsbn())
                     .title(book.getTitle())
                     .publisher(book.getPublisher())
@@ -34,11 +33,26 @@ public class ResponseBook {
                     .build();
         }
     }
+
+
     @Builder
-    @Data
-    public static class sellBook{
+    @Getter
+    public static class BookListDto{
         private String isbn;
         private String title;
-        private Integer price;
+        private String publisher;
+        private String image;
+        private Integer stock;
+
+        public static BookListDto of(Book book){
+            return BookListDto.builder()
+                    .isbn(book.getIsbn())
+                    .title(book.getTitle())
+                    .publisher(book.getPublisher())
+                    .image(book.getImage())
+                    .stock(book.getStock())
+                    .build();
+        }
     }
+
 }

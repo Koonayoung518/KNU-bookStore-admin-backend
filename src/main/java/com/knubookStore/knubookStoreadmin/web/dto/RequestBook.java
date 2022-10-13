@@ -1,15 +1,13 @@
 package com.knubookStore.knubookStoreadmin.web.dto;
 
-import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
 
 public class RequestBook {
     @Builder
     @Data
-    public static class registerBook{
+    public static class RegisterBookDto{
         private String isbn;
         private String title;
         private String publisher;
@@ -22,17 +20,11 @@ public class RequestBook {
 
     @Builder
     @Data
-    public static class updateBook{
+    public static class UpdateBookDto{
         private String isbn;
         private Integer price;
         private Integer stock;
     }
 
-    @Builder
-    @Data
-    public static class sellBook{
-        private List<BookInfo> bookList;
-        private Integer totalPrice;
-        private String payment; //결제 수단
-    }
+
 }

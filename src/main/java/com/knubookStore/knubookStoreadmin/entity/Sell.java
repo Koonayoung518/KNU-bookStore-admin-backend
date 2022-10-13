@@ -18,25 +18,29 @@ public class Sell {
     @Column(name = "isbn")
     private String isbn;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "unit_price")
     private Integer  unitPrice;//단가
 
     @Column(name = "amount")
     private Integer amount; //수량
 
-    @Column(name = "price")
-    private Integer price;
+    @Column(name = "total")
+    private Integer total;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "history")
     private History history;
 
     @Builder
-    public Sell(String isbn, Integer unitPrice, Integer amount, Integer price, History history){
+    public Sell(String isbn, String title, Integer unitPrice, Integer amount, Integer total, History history){
         this.isbn = isbn;
+        this.title = title;
         this.unitPrice = unitPrice;
         this.amount = amount;
-        this.price = price;
+        this.total = total;
         this.history = history;
     }
 }

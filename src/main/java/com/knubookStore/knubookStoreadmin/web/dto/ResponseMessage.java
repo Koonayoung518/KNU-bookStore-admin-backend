@@ -13,7 +13,6 @@ public class ResponseMessage {
     private String id = UUID.randomUUID().toString();
     @Builder.Default
     private Date dateTime = new Date();
-    private int status;
     private String message;
-    private Object list;
+    private Object data;
 }

@@ -24,20 +24,18 @@ public class AdminController {
     public ResponseEntity<ResponseMessage> register(@Validated @RequestBody RequestAdmin.Admin requestDto){
         adminService.register(requestDto);
 
-        return new ResponseEntity<>(ResponseMessage.builder()
-                .status(HttpStatus.OK.value())
+        return ResponseEntity.ok().body(ResponseMessage.builder()
                 .message("관리자 등록 성공")
-                .build(), HttpStatus.OK);
+                .build());
     }
 
     @PostMapping("/admin/login")
     public ResponseEntity<ResponseMessage> login(@Validated @RequestBody RequestAdmin.Admin requestDto){
         ResponseAdmin.Token tokens = adminService.login(requestDto).orElseThrow(()->new NotFoundAdminException());
 
-        return new ResponseEntity<>(ResponseMessage.builder()
-                .status(HttpStatus.OK.value())
+        return ResponseEntity.ok().body(ResponseMessage.builder()
                 .message("관리자 로그인 성공")
-                .list(tokens)
-                .build(), HttpStatus.OK);
+                .data(tokens)
+                .build());
     }
 }

@@ -8,6 +8,7 @@ import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.BookInfo;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
+import com.knubookStore.knubookStoreadmin.web.dto.RequestSell;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ public class BookServiceTests {
     @Transactional
     void getBookTest(){
         String isbn = "9788965402602";
-        ResponseBook.getBook getBook = bookService.getBook(isbn);
+        ResponseBook.BookDto getBook = bookService.getBook(isbn);
         assertNotNull(getBook);
     }
     @Test
@@ -47,7 +48,7 @@ public class BookServiceTests {
                 .build();
         bookRepository.save(book);
 
-        ResponseBook.getBook getBook = bookService.getBook(isbn);
+        ResponseBook.BookDto getBook = bookService.getBook(isbn);
         System.out.println(getBook);
     }
 
@@ -63,7 +64,7 @@ public class BookServiceTests {
                 .isbn("9788960777330")
                 .build();
         bookRepository.save(book1);
-        List<ResponseBook.getBook> getBook = bookService.getAllBook();
+        List<ResponseBook.BookListDto> getBook = bookService.getAllBook();
         System.out.println(getBook);
     }
     @Test
@@ -71,7 +72,7 @@ public class BookServiceTests {
     @Transactional
     void registerBookTest(){
         String isbn = "9788965402602";
-        RequestBook.registerBook registerBook = RequestBook.registerBook
+        RequestBook.RegisterBookDto registerBook = RequestBook.RegisterBookDto
                 .builder()
                 .isbn(isbn)
                 .build();
@@ -93,33 +94,5 @@ public class BookServiceTests {
         //책 삭제
         bookService.deleteBook("9788960777330");
         assertNull(bookRepository.findByIsbn("9788960777330"));
-    }
-
-    @Test
-    @DisplayName("책 판매 내역 저장 테스트")
-    @Transactional
-    void registerSellBook() {
-        Book book = Book.builder()
-                .isbn("9788965402602")
-                .stock(5)
-                .build();
-        bookRepository.save(book);
-        //책 판매
-        List<BookInfo> list = new ArrayList<>();
-        BookInfo bookInfo = BookInfo.builder()
-                .isbn("9788965402602")
-                .amount(2)
-                .unitPrice(22000)
-                .price(44000)
-                .build();
-        list.add(bookInfo);
-        RequestBook.sellBook requestDto = RequestBook.sellBook.builder()
-                .bookList(list)
-                .totalPrice(64000)
-                .payment("Cash")
-                .build();
-        bookService.sellBook(requestDto);
-        Book result = bookRepository.findByIsbn("9788965402602");
-        assertEquals(result.getStock(), 3);
     }
         }

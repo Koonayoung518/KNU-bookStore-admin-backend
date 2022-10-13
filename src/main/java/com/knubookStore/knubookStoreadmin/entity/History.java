@@ -32,14 +32,22 @@ public class History {
     @Column(name = "total_price")
     private Integer totalPrice;
 
+    @Column(name = "change")
+    private Integer change;
+
+    @Column(name = "money")
+    private Integer money;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "payment")
     private PaymentType payment; //결제 수단
 
     @Builder
-    public History(Integer totalPrice, PaymentType payment){
+    public History(Integer totalPrice, PaymentType payment, Integer money, Integer change){
         this.totalPrice = totalPrice;
         this.payment = payment;
+        this.money = money;
+        this.change = change;
     }
 
     public void addSell(Sell sell){

@@ -11,9 +11,7 @@ import com.knubookStore.knubookStoreadmin.exception.errors.SellFailedException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
 import com.knubookStore.knubookStoreadmin.repository.SellRepository;
-import com.knubookStore.knubookStoreadmin.web.dto.BookInfo;
-import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
-import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
+import com.knubookStore.knubookStoreadmin.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -30,8 +28,6 @@ import java.util.*;
 @PropertySource("classpath:/secret/api-key.properties")
 public class BookService {
     private final BookRepository bookRepository;
-    private final HistoryRepository historyRepository;
-    private final SellRepository sellRepository;
 
     @Value("${api.id}")
     private String clientId;
@@ -39,22 +35,12 @@ public class BookService {
     private String clientSecret;
 
     @Transactional
-    public ResponseBook.getBook getBook(String isbn){
-        ResponseBook.getBook responseBook =null;
+    public ResponseBook.BookDto getBook(String isbn){
+        ResponseBook.BookDto responseBook =null;
 
         Book book = bookRepository.findByIsbn(isbn);
         if(book != null){ //이미 등록된 책일 경우
-            responseBook = ResponseBook.getBook.builder()
-                    .isbn(book.getIsbn())
-                    .title(book.getTitle())
-                    .publisher(book.getPublisher())
-                    .author(book.getAuthor())
-                    .price(book.getPrice())
-                    .image(book.getImage())
-                    .pubdate(book.getPubdate())
-                    .stock(book.getStock())
-                    .bookType(book.getType())
-                    .build();
+            responseBook = ResponseBook.BookDto.of(book);
             return responseBook;
         }
         // 네이버 api로 책 정보 찾기
@@ -73,12 +59,12 @@ public class BookService {
             Iterator<org.jsoup.nodes.Element> rows = doc.select("item").iterator();
             Element item = rows.next();
             String[] isbnList =  item.select("isbn").text().split(" ");
-            responseBook = ResponseBook.getBook.builder()
-                    .isbn(isbnList[1])
+            responseBook = ResponseBook.BookDto.builder()
+                    .isbn(isbnList[0])
                     .title(item.select("title").text())
                     .publisher(item.select("publisher").text())
                     .author(item.select("author").text())
-                    .price(Integer.parseInt(item.select("price").text()))
+                    .price(Integer.parseInt(item.select("discount").text()))
                     .image(item.select("image").text())
                     .pubdate(item.select("pubdate").text())
                     .stock(0)
@@ -91,29 +77,19 @@ public class BookService {
         return responseBook;
     }
 
-    @Transactional
-    public List<ResponseBook.getBook> getAllBook(){
-        List<ResponseBook.getBook> list = new ArrayList<>();
+    @Transactional(readOnly = true)
+    public List<ResponseBook.BookListDto> getAllBook(){
+        List<ResponseBook.BookListDto> list = new ArrayList<>();
       List<Book> books =  bookRepository.findAll();
       for(Book book : books){
-          ResponseBook.getBook responseBook = ResponseBook.getBook.builder()
-                  .isbn(book.getIsbn())
-                  .title(book.getTitle())
-                  .publisher(book.getPublisher())
-                  .author(book.getAuthor())
-                  .price(book.getPrice())
-                  .image(book.getImage())
-                  .pubdate(book.getPubdate())
-                  .stock(book.getStock())
-                  .bookType(book.getType())
-                  .build();
-          list.add(responseBook);
+          ResponseBook.BookListDto bookListDto = ResponseBook.BookListDto.of(book);
+          list.add(bookListDto);
       }
         return list;
     }
 
     @Transactional
-    public void registerBook(RequestBook.registerBook requestBook){
+    public void registerBook(RequestBook.RegisterBookDto requestBook){
         Book book = bookRepository.findByIsbn(requestBook.getIsbn());
         if(book != null){ //이미 재고가 있는 책일 경우
             throw new BookDuplicatedException();
@@ -133,7 +109,7 @@ public class BookService {
     }
 
     @Transactional
-    public void updateBook(RequestBook.updateBook updateBook){
+    public void updateBook(RequestBook.UpdateBookDto updateBook){
         Book book = bookRepository.findByIsbn(updateBook.getIsbn());
         if(book == null){//해당하는 책이 없을 경우
             throw new NotFoundBookException();
@@ -150,50 +126,6 @@ public class BookService {
         bookRepository.delete(book);
     }
 
-    //판매
-    @Transactional
-    public Optional<ResponseBook.sellBook> getSellBook(String isbn){
-        Book book = bookRepository.findByIsbn(isbn);
-        if(book == null){// 책이 없을 경우
-            throw new NotFoundBookException();
-        }
-        ResponseBook.sellBook response = ResponseBook.sellBook.builder()
-                .isbn(book.getIsbn())
-                .title(book.getTitle())
-                .price(book.getPrice())
-                .build();
-        return Optional.ofNullable(response);
-    }
-    public void sellBook(RequestBook.sellBook requestDto){
-        if(requestDto.getBookList().isEmpty()){
-            throw new SellFailedException();
-        }
-        History history = History.builder()
-                .totalPrice(requestDto.getTotalPrice())
-                .payment(PaymentType.valueOf(requestDto.getPayment()))
-                .build();
-        history = historyRepository.save(history);
-
-        for (BookInfo bookInfo : requestDto.getBookList()){
-            Book book = bookRepository.findByIsbn(bookInfo.getIsbn());
-            if(book == null){// 책이 없을 경우
-                throw new NotFoundBookException();
-            }
-            //책 수량 변경
-            book.updateStock(book.getStock() - bookInfo.getAmount());
-            //판매내역 저장
-            Sell sell = Sell.builder()
-                    .isbn(bookInfo.getIsbn())
-                    .unitPrice(bookInfo.getUnitPrice())
-                    .amount(bookInfo.getAmount())
-                    .price(bookInfo.getPrice())
-                    .history(history)
-                    .build();
-            sell = sellRepository.save(sell);
-            history.addSell(sell);
-        }
-
-    }
 }
 
 
