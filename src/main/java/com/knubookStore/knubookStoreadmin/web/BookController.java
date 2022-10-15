@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -17,7 +18,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping("/admin/manage/book")
-    public ResponseEntity<ResponseMessage> registerBook(@RequestBody RequestBook.RegisterBookDto requestDto){
+    public ResponseEntity<ResponseMessage> registerBook(@Valid @RequestBody RequestBook.RegisterBookDto requestDto){
         bookService.registerBook(requestDto);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
@@ -29,7 +30,7 @@ public class BookController {
         List<ResponseBook.BookListDto> book = bookService.getAllBook();
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
-                .message("책 전체 조회 성공")
+                .message("책 전체 목록 조회 성공")
                 .data(book)
                 .build());
     }
@@ -55,7 +56,7 @@ public class BookController {
     }
 
     @PutMapping("/admin/manage/book")
-    public ResponseEntity<ResponseMessage> updateBook(@RequestBody RequestBook.UpdateBookDto requestDto){
+    public ResponseEntity<ResponseMessage> updateBook(@Valid @RequestBody RequestBook.UpdateBookDto requestDto){
         bookService.updateBook(requestDto);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()

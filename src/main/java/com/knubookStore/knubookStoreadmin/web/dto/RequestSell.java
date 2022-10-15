@@ -13,8 +13,8 @@ public class RequestSell {
     public static class RegisterSellBookHistoryDto{
         private List<BookInfo> bookList;
         private Integer totalPrice;
-        private Integer change;
         private Integer money;
+        private Integer change;
         private String payment; //결제 수단
     }
 }

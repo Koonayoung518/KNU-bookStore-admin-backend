@@ -4,7 +4,9 @@ import com.knubookStore.knubookStoreadmin.entity.History;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 public class ResponseSell {
 
@@ -20,7 +22,7 @@ public class ResponseSell {
     @Data
     public static class HistoryDto{
         private Long id;
-        private Date sellDate;
+        private LocalDateTime sellDate;
         private Integer totalPrice;
 
         public static HistoryDto of(History history){
@@ -30,5 +32,16 @@ public class ResponseSell {
                     .totalPrice(history.getTotalPrice())
                     .build();
         }
+    }
+
+    @Builder
+    @Data
+    public static class HistoryDetailDto{
+        private String sellDate;
+        private List<BookInfo> bookList;
+        private Integer totalPrice;
+        private Integer money;
+        private Integer change;
+        private String payment;
     }
 }
