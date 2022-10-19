@@ -6,10 +6,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 public class ResponseBook {
     @Builder
     @Getter
     public static class BookDto{
+        private LocalDateTime registrationDate;
         private String isbn;
         private String title;
         private String publisher;
@@ -22,6 +25,7 @@ public class ResponseBook {
 
         public static BookDto of(Book book){
             return BookDto.builder()
+                    .registrationDate(book.getRegistrationDate())
                     .isbn(book.getIsbn())
                     .title(book.getTitle())
                     .publisher(book.getPublisher())
@@ -55,4 +59,27 @@ public class ResponseBook {
         }
     }
 
+    @Builder
+    @Getter
+    public static class BookDetailListDto{
+        private String isbn;
+        private String title;
+        private String publisher;
+        private String author;
+        private Integer price;
+        private String image;
+        private Integer stock;
+
+        public static BookDetailListDto of(Book book){
+            return BookDetailListDto.builder()
+                    .isbn(book.getIsbn())
+                    .title(book.getTitle())
+                    .publisher(book.getPublisher())
+                    .author(book.getAuthor())
+                    .price(book.getPrice())
+                    .image(book.getImage())
+                    .stock(book.getStock())
+                    .build();
+        }
+    }
 }

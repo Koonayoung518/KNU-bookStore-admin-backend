@@ -1,5 +1,6 @@
 package com.knubookStore.knubookStoreadmin.web;
 
+import com.knubookStore.knubookStoreadmin.core.Type.SearchType;
 import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
 import com.knubookStore.knubookStoreadmin.provider.service.SellService;
 import com.knubookStore.knubookStoreadmin.web.dto.*;
@@ -52,10 +53,17 @@ public class SellController {
 
     @GetMapping("/admin/history/type/{type}")
     public ResponseEntity<ResponseMessage> getHistoryByCondition(@PathVariable String type,
-                                                                    @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
-                                                                  @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
-                                                                    @RequestParam("price") Integer price){
-        Page<ResponseSell.HistoryDto> response = sellService.getHistoryByCondition(type,startDate, endDate, price);
+                                                                 @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+                                                                 @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
+                                                                 @RequestParam("price") Integer price,
+                                                                 @PageableDefault(size=5, sort="sellDate", direction = Sort.Direction.DESC) Pageable pageable){
+        SearchType searchType = null;
+        try{
+            searchType = SearchType.valueOf(type);
+        }catch (IllegalArgumentException e){
+            searchType = SearchType.DEFAULT;
+        }
+        Page<ResponseSell.HistoryDto> response = sellService.getHistoryByCondition(searchType,startDate, endDate, price, pageable);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
                 .message("판매 내역 목록 조건 조회 성공")

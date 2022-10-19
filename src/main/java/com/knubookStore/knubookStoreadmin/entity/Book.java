@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Table(name = "book")
 @Entity
@@ -15,6 +16,9 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "registration_date")
+    private LocalDateTime registrationDate = LocalDateTime.now(); //입고 날짜
 
     @Column(name = "isbn")
     private String isbn; //isbn 번호

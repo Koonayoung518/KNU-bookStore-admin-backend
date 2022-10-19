@@ -17,6 +17,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.io.*;
@@ -124,6 +126,12 @@ public class BookService {
             throw new NotFoundBookException();
         }
         bookRepository.delete(book);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<ResponseBook.BookDetailListDto> getAllBookToSite(Pageable pageable){
+        Page<Book> bookList = bookRepository.findAll(pageable);
+        return bookList.map(ResponseBook.BookDetailListDto::of);
     }
 
 }

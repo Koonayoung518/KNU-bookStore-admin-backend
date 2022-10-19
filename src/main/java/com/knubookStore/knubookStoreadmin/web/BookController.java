@@ -5,6 +5,10 @@ import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +39,7 @@ public class BookController {
                 .build());
     }
 
+
     @GetMapping("/admin/manage/book/{isbn}")
     public ResponseEntity<ResponseMessage> getBook(@PathVariable String isbn){
         ResponseBook.BookDto book = bookService.getBook(isbn);
@@ -64,4 +69,14 @@ public class BookController {
                 .build());
     }
 
+
+    @GetMapping("/book")
+    public ResponseEntity<ResponseMessage> getAllBookToSite(@PageableDefault(size = 5, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<ResponseBook.BookDetailListDto> book = bookService.getAllBookToSite(pageable);
+
+        return ResponseEntity.ok().body(ResponseMessage.builder()
+                .message("사이트용 책 조회 성공")
+                .data(book)
+                .build());
+    }
 }

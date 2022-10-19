@@ -1,6 +1,7 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.core.Type.PaymentType;
+import com.knubookStore.knubookStoreadmin.core.Type.SearchType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import com.knubookStore.knubookStoreadmin.entity.History;
 import com.knubookStore.knubookStoreadmin.entity.Sell;
@@ -15,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -67,7 +69,7 @@ public class SellServiceTests {
     void getAllHistoryTest(){
         History history = History.builder()
                 .totalPrice(100000)
-                .payment(PaymentType.Cash)
+                .payment(PaymentType.CASH)
                 .build();
         history = historyRepository.save(history);
 
@@ -84,7 +86,7 @@ public class SellServiceTests {
 
         History history1 = History.builder()
                 .totalPrice(100000)
-                .payment(PaymentType.Cash)
+                .payment(PaymentType.CASH)
                 .build();
         history1 = historyRepository.save(history1);
         Sell sell1 = Sell.builder()
@@ -107,7 +109,7 @@ public class SellServiceTests {
     void getHistoryDetailTest(){
         History history = History.builder()
                 .totalPrice(100000)
-                .payment(PaymentType.Cash)
+                .payment(PaymentType.CASH)
                 .build();
         history = historyRepository.save(history);
 
@@ -124,7 +126,7 @@ public class SellServiceTests {
 
         History history1 = History.builder()
                 .totalPrice(100000)
-                .payment(PaymentType.Cash)
+                .payment(PaymentType.CASH)
                 .build();
         history1 = historyRepository.save(history1);
         Sell sell1 = Sell.builder()
@@ -150,7 +152,7 @@ public class SellServiceTests {
         History history = History.builder()
                 .sellDate(LocalDateTime.now())
                 .totalPrice(1000)
-                .payment(PaymentType.Cash)
+                .payment(PaymentType.CASH)
                 .build();
         history = historyRepository.save(history);
 
@@ -168,7 +170,7 @@ public class SellServiceTests {
         History history1 = History.builder()
                 .sellDate(LocalDateTime.now().minusDays(5))
                 .totalPrice(200)
-                .payment(PaymentType.Cash)
+                .payment(PaymentType.CASH)
                 .build();
         history1 = historyRepository.save(history1);
         Sell sell1 = Sell.builder()
@@ -183,18 +185,19 @@ public class SellServiceTests {
         history1.addSell(sell1);
 
         System.out.println("history 2 : " + history1.getSellDate());
+        Pageable sortedBySellDateDesc = PageRequest.of(0,10, Sort.by("sellDate").descending());
+
         //금액 조회
-        Page<ResponseSell.HistoryDto> response = sellService.getHistoryByCondition("PRICE", LocalDateTime.now(), LocalDateTime.now(), 200);
+        Page<ResponseSell.HistoryDto> response = sellService.getHistoryByCondition(SearchType.PRICE, LocalDateTime.now(), LocalDateTime.now(), 200,sortedBySellDateDesc);
         assertEquals(1, response.getTotalElements());
         for (ResponseSell.HistoryDto item : response) {
             System.out.println(item.getSellDate() + " " + item.getTotalPrice());
         }
         System.out.println("기간 조회==============");
         //기간 조회
-        Page<ResponseSell.HistoryDto> dateResponse = sellService.getHistoryByCondition("DATE", LocalDateTime.now().minusDays(2), LocalDateTime.now().plusDays(1), 200);
+        Page<ResponseSell.HistoryDto> dateResponse = sellService.getHistoryByCondition(SearchType.DATE, LocalDateTime.now().minusDays(2), LocalDateTime.now().plusDays(1), 200,sortedBySellDateDesc);
         assertEquals(1, dateResponse.getTotalElements());
         for (ResponseSell.HistoryDto item : dateResponse) {
-      
         System.out.println(item.getSellDate() + " " + item.getTotalPrice());
     }
        }

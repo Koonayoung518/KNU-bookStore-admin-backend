@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -111,20 +112,18 @@ public class SellService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ResponseSell.HistoryDto> getHistoryByCondition(String type, LocalDateTime startDate, LocalDateTime endDate,
-                                                               Integer price){
-        Pageable sortedBySellDateDesc = PageRequest.of(0,10, Sort.by("sellDate").descending());
+    public Page<ResponseSell.HistoryDto> getHistoryByCondition(SearchType type, LocalDateTime startDate, LocalDateTime endDate,
+                                                               Integer price, Pageable pageable){
         Page<History> historyList;
-        switch (SearchType.valueOf(type)) {
+        switch (type) {
             case DATE:
-                 historyList = historyRepository.findByHistoryByDate(sortedBySellDateDesc, startDate, endDate);
-
+                 historyList = historyRepository.findByHistoryByDate(pageable, startDate.toLocalDate().atTime(0,0), endDate.toLocalDate().atTime(0,0).plusDays(1));
                 break;
             case PRICE:
-                historyList = historyRepository.findByHistoryByPrice(sortedBySellDateDesc, price);
+                historyList = historyRepository.findByHistoryByPrice(pageable, price);
                 break;
             default:
-                historyList = historyRepository.findAll(sortedBySellDateDesc);
+                historyList = historyRepository.findAll(pageable);
                 break;
         }
         return historyList.map(ResponseSell.HistoryDto::of);
