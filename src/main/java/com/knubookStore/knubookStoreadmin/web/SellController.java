@@ -83,6 +83,6 @@ public class SellController {
     @GetMapping("/dev")
     public String dev(){
         System.out.println("dev 실행");
-        return "Hello world!";
+        return "dev test 실행";
     }
 }
