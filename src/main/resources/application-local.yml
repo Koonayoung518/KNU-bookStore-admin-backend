@@ -9,11 +9,16 @@
     username: sa
     password:
 
+
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
+
   jpa:
     show-sql: true
     generate-ddl: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 
     properties:
       hibernate:

@@ -31,7 +31,7 @@ public class Sell {
     private Integer total;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "history")
+    @JoinColumn(name = "history_id")
     private History history;
 
     @Builder

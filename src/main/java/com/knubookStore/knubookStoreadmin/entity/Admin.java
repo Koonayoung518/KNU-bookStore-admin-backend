@@ -12,10 +12,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Admin {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private String userId;
 
     @Column(name="password")

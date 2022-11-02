@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -32,8 +34,8 @@ public class BookStoreInfoServiceTests {
                 .notice("내일 휴무입니다.")
                 .build();
         bookStoreInfoService.registerBookInfo(request);
-        BookStoreInfo bookStoreInfo = bookStoreInfoRepository.findById(1L).orElseThrow(()-> new NotFoundBookStoreInfoException());
-        assertNotNull(bookStoreInfo);
+        List<BookStoreInfo> bookStoreInfo = bookStoreInfoRepository.findAll();
+        assertEquals(1, bookStoreInfo.size());
 
     }
 
@@ -47,7 +49,7 @@ public class BookStoreInfoServiceTests {
                 .phone("031280~~")
                 .notice("내일 휴무입니다.")
                 .build();
-        bookStoreInfoRepository.save(register);
+        register = bookStoreInfoRepository.save(register);
         //재 등록
         RequestBookStoreInfo.RegisterBookStoreInfoDto request = RequestBookStoreInfo.RegisterBookStoreInfoDto.builder()
                 .operatingTime("9:00-17:00")
@@ -56,9 +58,8 @@ public class BookStoreInfoServiceTests {
                 .notice("내일 휴무입니다.")
                 .build();
         bookStoreInfoService.registerBookInfo(request);
-        BookStoreInfo bookStoreInfo = bookStoreInfoRepository.findById(1L).orElseThrow(()-> new NotFoundBookStoreInfoException());
         assertEquals(1, bookStoreInfoRepository.findAll().size());
-        assertEquals("바뀐 위치", bookStoreInfo.getLocation());
+        assertTrue(bookStoreInfoRepository.findAll().contains(register));
     }
 
     @Test

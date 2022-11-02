@@ -1,14 +1,9 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
-import com.knubookStore.knubookStoreadmin.core.Type.PaymentType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
-import com.knubookStore.knubookStoreadmin.entity.History;
-import com.knubookStore.knubookStoreadmin.entity.Sell;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
-import com.knubookStore.knubookStoreadmin.web.dto.BookInfo;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
-import com.knubookStore.knubookStoreadmin.web.dto.RequestSell;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,7 +43,8 @@ public class BookServiceTests {
         bookRepository.save(book);
 
         ResponseBook.BookDto getBook = bookService.getBook(isbn);
-        System.out.println(getBook);
+        assertNotNull(getBook);
+        assertNotNull(getBook.getRegistrationDate());
     }
 
     @Test

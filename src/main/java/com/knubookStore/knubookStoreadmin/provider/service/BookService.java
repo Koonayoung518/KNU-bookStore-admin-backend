@@ -65,7 +65,7 @@ public class BookService {
                     .isbn(isbnList[0])
                     .title(item.select("title").text())
                     .publisher(item.select("publisher").text())
-                    .author(item.select("author").text())
+                    .author(item.select("author").text().replaceAll("[@&^]", ", "))
                     .price(Integer.parseInt(item.select("discount").text()))
                     .image(item.select("image").text())
                     .pubdate(item.select("pubdate").text())

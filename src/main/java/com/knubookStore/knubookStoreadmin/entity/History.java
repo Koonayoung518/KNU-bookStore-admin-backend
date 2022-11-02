@@ -21,10 +21,10 @@ import java.util.List;
 public class History {
 
     @Id
+    @Column(name = "history_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CreatedDate
     @Column(name = "sell_date")
     private LocalDateTime sellDate;
 
@@ -34,7 +34,7 @@ public class History {
     @Column(name = "total_price")
     private Integer totalPrice;
 
-    @Column(name = "change")
+    @Column(name = "change_price")
     private Integer change;
 
     @Column(name = "money")

@@ -57,7 +57,7 @@ public class SellServiceTests {
         RequestSell.RegisterSellBookHistoryDto requestDto = RequestSell.RegisterSellBookHistoryDto.builder()
                 .bookList(list)
                 .totalPrice(64000)
-                .payment("Cash")
+                .payment("CASH")
                 .build();
         sellService.sellBook(requestDto);
         Book result = bookRepository.findByIsbn("9788965402602");
@@ -65,11 +65,12 @@ public class SellServiceTests {
     }
 
     @Test
+    @Transactional
     @DisplayName("판매내역 전체 조회 테스트(성공)")
     void getAllHistoryTest(){
         History history = History.builder()
                 .totalPrice(100000)
-                .payment(PaymentType.CASH)
+                .payment(PaymentType.CARD)
                 .build();
         history = historyRepository.save(history);
 
@@ -99,15 +100,16 @@ public class SellServiceTests {
                 .build();
         sell1 = sellRepository.save(sell1);
         history1.addSell(sell1);
-
         Page<ResponseSell.HistoryDto> response = sellService.getAllHistory();
         assertEquals(2,response.getTotalElements());
     }
 
     @Test
+    @Transactional
     @DisplayName("판매내역 상세 조회 테스트(성공)")
     void getHistoryDetailTest(){
         History history = History.builder()
+                .sellDate(LocalDateTime.now())
                 .totalPrice(100000)
                 .payment(PaymentType.CASH)
                 .build();
@@ -147,6 +149,7 @@ public class SellServiceTests {
     }
 
     @Test
+    @Transactional
     @DisplayName("판매내역 전체 조건 조회 테스트(성공)")
     void getAllHistoryByConditionTest() {
         History history = History.builder()

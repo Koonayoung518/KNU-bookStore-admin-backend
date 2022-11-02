@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://bookstoredatabase.c3rz1iq45zfu.ap-northeast-2.rds.amazonaws.com:3306/bookstore?characterEncoding=UTF-8&serverTimezone=UTC
+    username: admin
+    password: bookstore
+
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
+
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        format_sql: true
+

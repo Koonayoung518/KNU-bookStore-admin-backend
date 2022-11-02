@@ -38,7 +38,7 @@ public class Book {
     @Column(name = "image")
     private String image; //image url
 
-    @Column(name = "pubDate")
+    @Column(name = "pubdate")
     private String pubdate; //출간일
 
     @Column(name = "stock")

@@ -71,7 +71,7 @@ public class BookController {
 
 
     @GetMapping("/book")
-    public ResponseEntity<ResponseMessage> getAllBookToSite(@PageableDefault(size = 5, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable){
+    public ResponseEntity<ResponseMessage> getAllBookToSite(@PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable){
         Page<ResponseBook.BookDetailListDto> book = bookService.getAllBookToSite(pageable);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
