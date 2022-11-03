@@ -8,7 +8,8 @@ pipeline{
         REPOSITORY_CREDENTIAL_ID = 'my-jenkins-github-key'
         REPOSITORY_URL = 'https://github.com/Koonayoung518/KNU-bookStore-admin-backend.git'
         TARGET_BRANCH = 'master'
-				IMAGE_NAME = 'kny415/bookstore'
+	    IMAGE_NAME = 'kny415/bookstore'
+	    CONTAINER_NAME = 'kny415/bookstore'
     }
 	stages{
 		stage('Init') {
@@ -153,7 +154,7 @@ pipeline{
 		}
 	    stage('Deploy') {
 			steps{
-				sh 'docker run -e "SPRING_PROFILES_ACTIVE=prod" -m "700M" -d -p 8080:8080 -t $IMAGE_NAME'
+				sh 'docker run --name $CONTAINER_NAME -e "SPRING_PROFILES_ACTIVE=prod" -m "700M" -d -p 8080:8080 -t $IMAGE_NAME'
 				}
 
 		    post {
