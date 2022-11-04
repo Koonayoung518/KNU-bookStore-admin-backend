@@ -9,15 +9,12 @@ pipeline{
         REPOSITORY_URL = 'https://github.com/Koonayoung518/KNU-bookStore-admin-backend.git'
         TARGET_BRANCH = 'master'
 	    IMAGE_NAME = 'kny415/bookstore'
-	    CONTAINER_NAME = 'kny415/bookstore'
+	    CONTAINER_NAME = 'bookstore'
     }
 	stages{
 		stage('Init') {
 			steps{
 				echo 'clear'
-				sh '''
-                docker rm -f $IMAGE_NAME
-                '''
 				deleteDir()
 				}
 		    post {
@@ -32,7 +29,7 @@ pipeline{
 		        }
 		    }
 		}
-	    stage('Clone') {
+	    stage('Clone project') {
 			steps{
 				git url : "$REPOSITORY_URL",
 				branch : "$TARGET_BRANCH",
@@ -127,13 +124,32 @@ pipeline{
 		        }
 		    }
 		}
-
-        stage('Backend Dockerizing') {
+        stage('build by maven'){
+            steps{
+                sh '''
+            	    chmod +x mvnw
+            		./mvnw clean package -DskipTests
+            		'''
+            		}
+            post {
+            	    success{
+            	        echo "Successfully Build"
+            		        }
+            		        always{
+            		            echo "I tried..."
+            		        }
+            		        failure{
+            		            error 'This pipeline stops here...'
+            		        }
+            		        cleanup{
+            		            echo "after all other post condition"
+            		        }
+            		    }
+        }
+        stage('Backend Dockerizing by Dockerfile') {
 			steps{
 				sh '''
-				chmod +x mvnw
-
-				./mvnw spring-boot:build-image -DskipTests -Dspring-boot.build-image.imageName=$IMAGE_NAME
+                    docker build -t $IMAGE_NAME .
 				'''
 				}
 
@@ -152,6 +168,21 @@ pipeline{
 		        }
 		    }
 		}
+        stage('Remove container') {
+                    steps {
+                        sh '''
+                        docker rm -f $CONTAINER_NAME
+                        '''
+                    }
+                    post {
+                        success {
+                            echo 'success rm container in pipeline'
+                        }
+                        failure {
+                            error 'fail rm container in pipeline'
+                        }
+                    }
+                }
 	    stage('Deploy') {
 			steps{
 				sh 'docker run --name $CONTAINER_NAME -e "SPRING_PROFILES_ACTIVE=prod" -m "700M" -d -p 8080:8080 -t $IMAGE_NAME'
