@@ -91,4 +91,14 @@ public class BookController {
                 .data(book)
                 .build());
     }
+
+    @GetMapping("/book/title/{title}")
+    public ResponseEntity<ResponseMessage> getBooksByTitleToSite(@PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable, @PathVariable String title){
+        Page<ResponseBook.BookDetailListDto> list = bookService.getBooksByTitleToSite(pageable, title);
+
+        return ResponseEntity.ok().body(ResponseMessage.builder()
+                .message("사이트용 제목 기반 책 목록 조회 성공")
+                .data(list)
+                .build());
+    }
 }
