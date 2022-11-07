@@ -134,6 +134,21 @@ public class BookService {
         return bookList.map(ResponseBook.BookDetailListDto::of);
     }
 
+
+    @Transactional(readOnly = true)
+    public List<ResponseBook.BookListDto> getBooksByTitle(String title){
+        System.out.println("title "+ title);
+
+        List<ResponseBook.BookListDto> list = new ArrayList<>();
+        List<Book> bookList = bookRepository.findByTitleLike(title);
+        if(bookList.size() != 0){
+            for(Book book : bookList){
+                list.add(ResponseBook.BookListDto.of(book));
+            }
+        }
+
+        return list;
+    }
 }
 
 

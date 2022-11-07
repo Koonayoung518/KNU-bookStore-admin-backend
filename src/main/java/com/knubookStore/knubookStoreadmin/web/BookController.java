@@ -5,6 +5,7 @@ import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseMessage;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -36,6 +37,17 @@ public class BookController {
         return ResponseEntity.ok().body(ResponseMessage.builder()
                 .message("책 전체 목록 조회 성공")
                 .data(book)
+                .build());
+    }
+
+    @GetMapping("/admin/manage/book/title/{title}")
+    public ResponseEntity<ResponseMessage> getBooksByTitle(@PathVariable String title){
+        System.out.println("title "+ title);
+        List<ResponseBook.BookListDto> list = bookService.getBooksByTitle(title);
+
+        return ResponseEntity.ok().body(ResponseMessage.builder()
+                .message("제목 기반 책 목록 조회 성공")
+                .data(list)
                 .build());
     }
 

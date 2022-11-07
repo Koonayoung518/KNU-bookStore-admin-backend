@@ -9,10 +9,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -89,5 +91,36 @@ public class BookServiceTests {
         //책 삭제
         bookService.deleteBook("9788960777330");
         assertNull(bookRepository.findByIsbn("9788960777330"));
+    }
+
+    @Test
+    @DisplayName("책 제목으로 목록 조회 테스트")
+    @Transactional
+    void getBooksByTitle(){
+        Book book = Book.builder()
+                .isbn("9788965402602")
+                .title("가나다")
+                .build();
+        bookRepository.save(book);
+
+        Book book1 = Book.builder()
+                .isbn("9788965402622")
+                .title("라가나")
+                .build();
+        bookRepository.save(book1);
+
+
+        Book book2 = Book.builder()
+                .isbn("9788965402622")
+                .title("마바사")
+                .build();
+        bookRepository.save(book2);
+
+        List<ResponseBook.BookListDto> list = bookService.getBooksByTitle("가나");
+        assertEquals(2, list.size());
+
+        for(ResponseBook.BookListDto bookListDto :list){
+            System.out.println(bookListDto.getTitle());
+        }
     }
         }

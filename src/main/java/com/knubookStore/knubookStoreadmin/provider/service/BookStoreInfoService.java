@@ -5,6 +5,7 @@ import com.knubookStore.knubookStoreadmin.exception.errors.BookStoreInfoDuplicat
 import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookStoreInfoException;
 import com.knubookStore.knubookStoreadmin.repository.BookStoreInfoRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBookStoreInfo;
+import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBookStoreInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

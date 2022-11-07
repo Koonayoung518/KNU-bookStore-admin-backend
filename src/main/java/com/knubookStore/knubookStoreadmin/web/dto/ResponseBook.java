@@ -34,6 +34,7 @@ public class ResponseBook {
                     .image(book.getImage())
                     .pubdate(book.getPubdate())
                     .stock(book.getStock())
+                    .bookType(book.getType())
                     .build();
         }
     }
