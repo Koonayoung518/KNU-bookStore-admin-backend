@@ -1,3 +1,4 @@
+spring:
   h2:
     console:
       enabled: true
@@ -8,7 +9,6 @@
     url: jdbc:h2:mem:test
     username: sa
     password:
-
 
   flyway:
     enabled: true
@@ -24,4 +24,3 @@
     properties:
       hibernate:
         format_sql: true
-

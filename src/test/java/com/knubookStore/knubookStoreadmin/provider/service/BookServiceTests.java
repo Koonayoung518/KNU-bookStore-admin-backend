@@ -1,5 +1,6 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
@@ -8,23 +9,30 @@ import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles("test")
 @SpringBootTest
+@AutoConfigureMockMvc
+@AutoConfigureRestDocs
 public class BookServiceTests {
     @Autowired
     BookService bookService;
     @Autowired
     BookRepository bookRepository;
     @Autowired
-    HistoryRepository historyRepository;
+    private MockMvc mockMvc;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Test
     @DisplayName("책 조회(네이버) 테스트")

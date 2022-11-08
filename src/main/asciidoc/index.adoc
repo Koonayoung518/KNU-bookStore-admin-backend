@@ -1,0 +1,13 @@
+= Bookstore RESTful Notes API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectnums:
+:sectlinks:
+:sectanchors:
+
+== Api Docs
+
+include::src/main/asciidoc/book-get-all.adoc[]
