@@ -10,4 +10,4 @@
 
 == Api Docs
 
-include::src/main/asciidoc/book-get-all.adoc[]
+include::book-get-all.adoc[]

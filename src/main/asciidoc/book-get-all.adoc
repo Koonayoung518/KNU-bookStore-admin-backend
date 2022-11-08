@@ -1,14 +1,17 @@
 [[book-get-all]]
-== 책 전체 목록 조회
-====== 요청 형식
+== 책 전체 목록 조회 API
+====== 등록된 책들의 목록을 반환한다.
+
+==== Http Request
 include::{snippets}/book-get-all/http-request.adoc[]
 include::{snippets}/book-get-all/httpie-request.adoc[]
-====== Request Body
+==== Request Body
 include::{snippets}/book-get-all/request-body.adoc[]
-====== 응답 형식
+==== Http Response
 include::{snippets}/book-get-all/http-response.adoc[]
+==== Response Field
 include::{snippets}/book-get-all/response-fields.adoc[]
-====== Response Body
+==== Response Example
 include::{snippets}/book-get-all/response-body.adoc[]
-====== Request curl
+==== Request curl
 include::{snippets}/book-get-all/curl-request.adoc[]

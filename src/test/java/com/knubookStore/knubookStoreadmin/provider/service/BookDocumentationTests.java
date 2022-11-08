@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-@AutoConfigureRestDocs(uriScheme = "http", uriHost = "ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com:8080")
+@AutoConfigureRestDocs
 public class BookDocumentationTests {
     @Autowired
     private MockMvc mockMvc;
@@ -51,7 +51,10 @@ public class BookDocumentationTests {
         result.andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())
                 .andDo(document("book-get-all",
-                        preprocessRequest(prettyPrint()),
+                        preprocessRequest(modifyUris()
+                                .scheme("http")
+                                .host("ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com")
+                                .removePort(), prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         responseFields(
                                 fieldWithPath("id").type(JsonFieldType.STRING).description("api response 고유 아이디 값"),
