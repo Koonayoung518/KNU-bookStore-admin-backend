@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-@AutoConfigureRestDocs
+@AutoConfigureRestDocs(uriScheme = "http", uriHost = "ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com")
 public class BookDocumentationTests {
     @Autowired
     private MockMvc mockMvc;
