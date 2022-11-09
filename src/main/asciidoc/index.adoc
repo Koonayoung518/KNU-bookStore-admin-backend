@@ -8,7 +8,7 @@ endif::[]
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
-:toclevels: 5
+:toclevels: 4
 :sectnums:
 :sectlinks:
 :sectanchors:
@@ -16,6 +16,21 @@ endif::[]
 == Api Docs
 다음은 교내 서점 사이트 프로젝트의 API 명세서이다.
 
+==== Http Request
+include::{snippets}/book-post/http-request.adoc[]
+include::{snippets}/book-post/httpie-request.adoc[]
+==== Request Body
+include::{snippets}/book-post/request-body.adoc[]
+include::{snippets}/book-post/request-fields.adoc[]
+==== Http Response
+include::{snippets}/book-post/http-response.adoc[]
+==== Response Body
+include::{snippets}/book-post/response-body.adoc[]
+include::{snippets}/book-post/response-fields.adoc[]
+==== Request curl
+include::{snippets}/book-post/curl-request.adoc[]
+
+== 여기부터
 include::book-post.adoc[]
 
 include::book-get-all.adoc[]
