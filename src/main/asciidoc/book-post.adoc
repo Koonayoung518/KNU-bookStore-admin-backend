@@ -1,3 +1,7 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+
 [[book-post]]
 == 책 등록 API
 책 정보를 등록한다.

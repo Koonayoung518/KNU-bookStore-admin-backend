@@ -1,3 +1,7 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+
 [[sell-post]]
 == 판매내역 등록 API
 판매내역을 등록한다.

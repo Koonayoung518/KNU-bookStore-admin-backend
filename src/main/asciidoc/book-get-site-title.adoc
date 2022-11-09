@@ -1,3 +1,7 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+
 [[book-get-site-title]]
 == 사이트용 제목 기반 책 목록 조회 API
 단어를 검색하면 그 단어를 포함한 제목인 책 목록을 반환한다.

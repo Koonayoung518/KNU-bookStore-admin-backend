@@ -1,3 +1,7 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+
 [[book-get]]
 == 책 조회 API
 책의 상세 정보를 조회한다.

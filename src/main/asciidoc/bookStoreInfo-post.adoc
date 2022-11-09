@@ -1,3 +1,7 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+
 [[bookStoreInfo-post]]
 == 서점 정보 등록 API
 서점 정보를 등록한다.

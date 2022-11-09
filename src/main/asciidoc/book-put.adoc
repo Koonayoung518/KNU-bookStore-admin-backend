@@ -1,3 +1,7 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+
 [[book-put]]
 == 책 정보 수정 API
 책 정보(가격, 재고)를 수정한다.

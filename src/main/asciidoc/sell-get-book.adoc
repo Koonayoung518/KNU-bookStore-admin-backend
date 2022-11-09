@@ -1,3 +1,7 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+
 [[sell-get-book]]
 == 판매할 책 정보 조회 API
 판매할 책 정보(isbn, 제목, 단가) 정보를 조회한다.
