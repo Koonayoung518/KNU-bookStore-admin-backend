@@ -1,5 +1,5 @@
 ifndef::snippets[]
-:snippets: ../../../build/generated-snippets
+:snippets: ../../../target/generated-snippets
 endif::[]
 
 [[bookStoreInfo-post]]
