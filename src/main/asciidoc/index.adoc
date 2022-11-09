@@ -1,3 +1,8 @@
+ifndef::snippets[]
+:snippets: ../../../target/generated-snippets
+endif::[]
+
+
 = Bookstore RESTful Notes API Guide
 :doctype: book
 :icons: font

@@ -429,166 +429,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body class="book toc2 toc-left">
+<body class="book">
 <div id="header">
-<h1>Bookstore RESTful Notes API Guide</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_api_docs">1. Api Docs</a></li>
-<li><a href="#book-post">2. 책 등록 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request">2.1. Http Request</a></li>
-<li><a href="#_request_body">2.2. Request Body</a></li>
-<li><a href="#_http_response">2.3. Http Response</a></li>
-<li><a href="#_response_body">2.4. Response Body</a></li>
-<li><a href="#_request_curl">2.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#book-get-all">3. 책 전체 목록 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_2">3.1. Http Request</a></li>
-<li><a href="#_request_body_2">3.2. Request Body</a></li>
-<li><a href="#_http_response_2">3.3. Http Response</a></li>
-<li><a href="#_response_body_2">3.4. Response Body</a></li>
-<li><a href="#_request_curl_2">3.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#book-get-title">4. 제목 기반 책 목록 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_3">4.1. Http Request</a></li>
-<li><a href="#_path_parameters">4.2. Path Parameters</a></li>
-<li><a href="#_http_response_3">4.3. Http Response</a></li>
-<li><a href="#_response_body_3">4.4. Response Body</a></li>
-<li><a href="#_request_curl_3">4.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#book-get">5. 책 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_4">5.1. Http Request</a></li>
-<li><a href="#_path_parameters_2">5.2. Path Parameters</a></li>
-<li><a href="#_request_body_3">5.3. Request Body</a></li>
-<li><a href="#_http_response_4">5.4. Http Response</a></li>
-<li><a href="#_response_body_4">5.5. Response Body</a></li>
-<li><a href="#_request_curl_4">5.6. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#book-put">6. 책 정보 수정 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_5">6.1. Http Request</a></li>
-<li><a href="#_request_body_4">6.2. Request Body</a></li>
-<li><a href="#_http_response_5">6.3. Http Response</a></li>
-<li><a href="#_response_body_5">6.4. Response Body</a></li>
-<li><a href="#_request_curl_5">6.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#book-delete">7. 책 정보 삭제 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_6">7.1. Http Request</a></li>
-<li><a href="#_path_parameters_3">7.2. Path Parameters</a></li>
-<li><a href="#_request_body_5">7.3. Request Body</a></li>
-<li><a href="#_http_response_6">7.4. Http Response</a></li>
-<li><a href="#_response_body_6">7.5. Response Body</a></li>
-<li><a href="#_request_curl_6">7.6. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#book-get-site">8. 사이트용 책 전체 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_7">8.1. Http Request</a></li>
-<li><a href="#_request_body_6">8.2. Request Body</a></li>
-<li><a href="#_http_response_7">8.3. Http Response</a></li>
-<li><a href="#_response_body_7">8.4. Response Body</a></li>
-<li><a href="#_request_curl_7">8.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#book-get-site-title">9. 사이트용 제목 기반 책 목록 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_8">9.1. Http Request</a></li>
-<li><a href="#_request_parameters">9.2. Request Parameters</a></li>
-<li><a href="#_http_response_8">9.3. Http Response</a></li>
-<li><a href="#_response_body_8">9.4. Response Body</a></li>
-<li><a href="#_request_curl_8">9.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#bookStoreInfo-get">10. 서점 정보 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_9">10.1. Http Request</a></li>
-<li><a href="#_http_response_9">10.2. Http Response</a></li>
-<li><a href="#_response_body_9">10.3. Response Body</a></li>
-<li><a href="#_request_curl_9">10.4. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#bookStoreInfo-post">11. 서점 정보 등록 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_10">11.1. Http Request</a></li>
-<li><a href="#_request_body_7">11.2. Request Body</a></li>
-<li><a href="#_http_response_10">11.3. Http Response</a></li>
-<li><a href="#_response_body_10">11.4. Response Body</a></li>
-<li><a href="#_request_curl_10">11.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#bookStoreInfo-delete">12. 서점 정보 삭제 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_11">12.1. Http Request</a></li>
-<li><a href="#_request_body_8">12.2. Request Body</a></li>
-<li><a href="#_http_response_11">12.3. Http Response</a></li>
-<li><a href="#_response_body_11">12.4. Response Body</a></li>
-<li><a href="#_request_curl_11">12.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#sell-get-book">13. 판매할 책 정보 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_12">13.1. Http Request</a></li>
-<li><a href="#_path_parameters_4">13.2. Path Parameters</a></li>
-<li><a href="#_request_body_9">13.3. Request Body</a></li>
-<li><a href="#_http_response_12">13.4. Http Response</a></li>
-<li><a href="#_response_body_12">13.5. Response Body</a></li>
-<li><a href="#_request_curl_12">13.6. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#sell-post">14. 판매내역 등록 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_13">14.1. Http Request</a></li>
-<li><a href="#_request_body_10">14.2. Request Body</a></li>
-<li><a href="#_http_response_13">14.3. Http Response</a></li>
-<li><a href="#_response_body_13">14.4. Response Body</a></li>
-<li><a href="#_request_curl_13">14.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#sell-get-history-condition">15. 판매 내역 목록 조건 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_14">15.1. Http Request</a></li>
-<li><a href="#_request_parameters_2">15.2. Request Parameters</a></li>
-<li><a href="#_http_response_14">15.3. Http Response</a></li>
-<li><a href="#_response_body_14">15.4. Response Body</a></li>
-<li><a href="#_request_curl_14">15.5. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#sell-get-history-detail">16. 판매내역 상세 조회 API</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_15">16.1. Http Request</a></li>
-<li><a href="#_path_parameters_5">16.2. Path Parameters</a></li>
-<li><a href="#_request_body_11">16.3. Request Body</a></li>
-<li><a href="#_http_response_15">16.4. Http Response</a></li>
-<li><a href="#_response_body_15">16.5. Response Body</a></li>
-<li><a href="#_request_curl_15">16.6. Request curl</a></li>
-</ul>
-</li>
-<li><a href="#sell-get-history">17. 판매 내역 목록 조회 API (Deprecated)</a>
-<ul class="sectlevel3">
-<li><a href="#_http_request_16">17.1. Http Request</a></li>
-<li><a href="#_request_body_12">17.2. Request Body</a></li>
-<li><a href="#_http_response_16">17.3. Http Response</a></li>
-<li><a href="#_response_body_16">17.4. Response Body</a></li>
-<li><a href="#_request_curl_16">17.5. Request curl</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
+<h1 id="_bookstore_restful_notes_api_guide" class="sect0">Bookstore RESTful Notes API Guide</h1>
 <div class="sect1">
 <h2 id="_api_docs"><a class="anchor" href="#_api_docs"></a><a class="link" href="#_api_docs">1. Api Docs</a></h2>
 <div class="sectionbody">
@@ -1103,8 +949,9 @@ Content-Length: 326
 <div class="paragraph">
 <p>책의 상세 정보를 조회한다.</p>
 </div>
-<div class="sect3">
-<h4 id="_http_request_4"><a class="anchor" href="#_http_request_4"></a><a class="link" href="#_http_request_4">5.1. Http Request</a></h4>
+<div class="paragraph">
+<p>Http Request:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /admin/manage/book/9788966262281 HTTP/1.1
@@ -1116,9 +963,9 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ http GET 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/manage/book/9788966262281'</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Path Parameters:</p>
 </div>
-<div class="sect3">
-<h4 id="_path_parameters_2"><a class="anchor" href="#_path_parameters_2"></a><a class="link" href="#_path_parameters_2">5.2. Path Parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. /admin/manage/book/{isbn}</caption>
 <colgroup>
@@ -1138,17 +985,17 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Request Body:</p>
 </div>
-<div class="sect3">
-<h4 id="_request_body_3"><a class="anchor" href="#_request_body_3"></a><a class="link" href="#_request_body_3">5.3. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Http Response:</p>
 </div>
-<div class="sect3">
-<h4 id="_http_response_4"><a class="anchor" href="#_http_response_4"></a><a class="link" href="#_http_response_4">5.4. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1177,9 +1024,9 @@ Content-Length: 480
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Response Body:</p>
 </div>
-<div class="sect3">
-<h4 id="_response_body_4"><a class="anchor" href="#_response_body_4"></a><a class="link" href="#_response_body_4">5.5. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -1282,13 +1129,12 @@ Content-Length: 480
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Request curl:</p>
 </div>
-<div class="sect3">
-<h4 id="_request_curl_4"><a class="anchor" href="#_request_curl_4"></a><a class="link" href="#_request_curl_4">5.6. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/manage/book/9788966262281' -i -X GET</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -1300,7 +1146,7 @@ Content-Length: 480
 <p>책 정보(가격, 재고)를 수정한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_5"><a class="anchor" href="#_http_request_5"></a><a class="link" href="#_http_request_5">6.1. Http Request</a></h4>
+<h4 id="_http_request_4"><a class="anchor" href="#_http_request_4"></a><a class="link" href="#_http_request_4">6.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PUT /admin/manage/book HTTP/1.1
@@ -1329,7 +1175,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_body_4"><a class="anchor" href="#_request_body_4"></a><a class="link" href="#_request_body_4">6.2. Request Body</a></h4>
+<h4 id="_request_body_3"><a class="anchor" href="#_request_body_3"></a><a class="link" href="#_request_body_3">6.2. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -1372,7 +1218,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
 </table>
 </div>
 <div class="sect3">
-<h4 id="_http_response_5"><a class="anchor" href="#_http_response_5"></a><a class="link" href="#_http_response_5">6.3. Http Response</a></h4>
+<h4 id="_http_response_4"><a class="anchor" href="#_http_response_4"></a><a class="link" href="#_http_response_4">6.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1392,7 +1238,7 @@ Content-Length: 156
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_5"><a class="anchor" href="#_response_body_5"></a><a class="link" href="#_response_body_5">6.4. Response Body</a></h4>
+<h4 id="_response_body_4"><a class="anchor" href="#_response_body_4"></a><a class="link" href="#_response_body_4">6.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -1441,7 +1287,7 @@ Content-Length: 156
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_5"><a class="anchor" href="#_request_curl_5"></a><a class="link" href="#_request_curl_5">6.5. Request curl</a></h4>
+<h4 id="_request_curl_4"><a class="anchor" href="#_request_curl_4"></a><a class="link" href="#_request_curl_4">6.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/manage/book' -i -X PUT \
@@ -1464,7 +1310,7 @@ Content-Length: 156
 <p>책 정보를 삭제한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_6"><a class="anchor" href="#_http_request_6"></a><a class="link" href="#_http_request_6">7.1. Http Request</a></h4>
+<h4 id="_http_request_5"><a class="anchor" href="#_http_request_5"></a><a class="link" href="#_http_request_5">7.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /admin/manage/book/9788966262281 HTTP/1.1
@@ -1478,7 +1324,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_path_parameters_3"><a class="anchor" href="#_path_parameters_3"></a><a class="link" href="#_path_parameters_3">7.2. Path Parameters</a></h4>
+<h4 id="_path_parameters_2"><a class="anchor" href="#_path_parameters_2"></a><a class="link" href="#_path_parameters_2">7.2. Path Parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. /admin/manage/book/{isbn}</caption>
 <colgroup>
@@ -1500,7 +1346,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_body_5"><a class="anchor" href="#_request_body_5"></a><a class="link" href="#_request_body_5">7.3. Request Body</a></h4>
+<h4 id="_request_body_4"><a class="anchor" href="#_request_body_4"></a><a class="link" href="#_request_body_4">7.3. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code></code></pre>
@@ -1508,7 +1354,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_http_response_6"><a class="anchor" href="#_http_response_6"></a><a class="link" href="#_http_response_6">7.4. Http Response</a></h4>
+<h4 id="_http_response_5"><a class="anchor" href="#_http_response_5"></a><a class="link" href="#_http_response_5">7.4. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1528,7 +1374,7 @@ Content-Length: 156
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_6"><a class="anchor" href="#_response_body_6"></a><a class="link" href="#_response_body_6">7.5. Response Body</a></h4>
+<h4 id="_response_body_5"><a class="anchor" href="#_response_body_5"></a><a class="link" href="#_response_body_5">7.5. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -1577,7 +1423,7 @@ Content-Length: 156
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_6"><a class="anchor" href="#_request_curl_6"></a><a class="link" href="#_request_curl_6">7.6. Request curl</a></h4>
+<h4 id="_request_curl_5"><a class="anchor" href="#_request_curl_5"></a><a class="link" href="#_request_curl_5">7.6. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/manage/book/9788966262281' -i -X DELETE</code></pre>
@@ -1593,7 +1439,7 @@ Content-Length: 156
 <p>등록된 책 전체를 조회한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_7"><a class="anchor" href="#_http_request_7"></a><a class="link" href="#_http_request_7">8.1. Http Request</a></h4>
+<h4 id="_http_request_6"><a class="anchor" href="#_http_request_6"></a><a class="link" href="#_http_request_6">8.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book HTTP/1.1
@@ -1607,7 +1453,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_body_6"><a class="anchor" href="#_request_body_6"></a><a class="link" href="#_request_body_6">8.2. Request Body</a></h4>
+<h4 id="_request_body_5"><a class="anchor" href="#_request_body_5"></a><a class="link" href="#_request_body_5">8.2. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code></code></pre>
@@ -1615,7 +1461,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_http_response_7"><a class="anchor" href="#_http_response_7"></a><a class="link" href="#_http_response_7">8.3. Http Response</a></h4>
+<h4 id="_http_response_6"><a class="anchor" href="#_http_response_6"></a><a class="link" href="#_http_response_6">8.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1670,7 +1516,7 @@ Content-Length: 949
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_7"><a class="anchor" href="#_response_body_7"></a><a class="link" href="#_response_body_7">8.4. Response Body</a></h4>
+<h4 id="_response_body_6"><a class="anchor" href="#_response_body_6"></a><a class="link" href="#_response_body_6">8.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -1879,7 +1725,7 @@ Content-Length: 949
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_7"><a class="anchor" href="#_request_curl_7"></a><a class="link" href="#_request_curl_7">8.5. Request curl</a></h4>
+<h4 id="_request_curl_6"><a class="anchor" href="#_request_curl_6"></a><a class="link" href="#_request_curl_6">8.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/book' -i -X GET</code></pre>
@@ -1895,7 +1741,7 @@ Content-Length: 949
 <p>단어를 검색하면 그 단어를 포함한 제목인 책 목록을 반환한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_8"><a class="anchor" href="#_http_request_8"></a><a class="link" href="#_http_request_8">9.1. Http Request</a></h4>
+<h4 id="_http_request_7"><a class="anchor" href="#_http_request_7"></a><a class="link" href="#_http_request_7">9.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /book/title?title=%EC%9E%90%EB%B0%94 HTTP/1.1
@@ -1930,7 +1776,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_http_response_8"><a class="anchor" href="#_http_response_8"></a><a class="link" href="#_http_response_8">9.3. Http Response</a></h4>
+<h4 id="_http_response_7"><a class="anchor" href="#_http_response_7"></a><a class="link" href="#_http_response_7">9.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1985,7 +1831,7 @@ Content-Length: 970
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_8"><a class="anchor" href="#_response_body_8"></a><a class="link" href="#_response_body_8">9.4. Response Body</a></h4>
+<h4 id="_response_body_7"><a class="anchor" href="#_response_body_7"></a><a class="link" href="#_response_body_7">9.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2194,7 +2040,7 @@ Content-Length: 970
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_8"><a class="anchor" href="#_request_curl_8"></a><a class="link" href="#_request_curl_8">9.5. Request curl</a></h4>
+<h4 id="_request_curl_7"><a class="anchor" href="#_request_curl_7"></a><a class="link" href="#_request_curl_7">9.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/book/title?title=%EC%9E%90%EB%B0%94' -i -X GET</code></pre>
@@ -2210,7 +2056,7 @@ Content-Length: 970
 <p>서점 정보를 조회한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_9"><a class="anchor" href="#_http_request_9"></a><a class="link" href="#_http_request_9">10.1. Http Request</a></h4>
+<h4 id="_http_request_8"><a class="anchor" href="#_http_request_8"></a><a class="link" href="#_http_request_8">10.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /bookStoreInfo HTTP/1.1
@@ -2224,7 +2070,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_http_response_9"><a class="anchor" href="#_http_response_9"></a><a class="link" href="#_http_response_9">10.2. Http Response</a></h4>
+<h4 id="_http_response_8"><a class="anchor" href="#_http_response_8"></a><a class="link" href="#_http_response_8">10.2. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2249,7 +2095,7 @@ Content-Length: 326
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_9"><a class="anchor" href="#_response_body_9"></a><a class="link" href="#_response_body_9">10.3. Response Body</a></h4>
+<h4 id="_response_body_8"><a class="anchor" href="#_response_body_8"></a><a class="link" href="#_response_body_8">10.3. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2318,7 +2164,7 @@ Content-Length: 326
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_9"><a class="anchor" href="#_request_curl_9"></a><a class="link" href="#_request_curl_9">10.4. Request curl</a></h4>
+<h4 id="_request_curl_8"><a class="anchor" href="#_request_curl_8"></a><a class="link" href="#_request_curl_8">10.4. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/bookStoreInfo' -i -X GET</code></pre>
@@ -2334,7 +2180,7 @@ Content-Length: 326
 <p>서점 정보를 등록한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_10"><a class="anchor" href="#_http_request_10"></a><a class="link" href="#_http_request_10">11.1. Http Request</a></h4>
+<h4 id="_http_request_9"><a class="anchor" href="#_http_request_9"></a><a class="link" href="#_http_request_9">11.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /admin/bookStoreInfo HTTP/1.1
@@ -2365,7 +2211,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_body_7"><a class="anchor" href="#_request_body_7"></a><a class="link" href="#_request_body_7">11.2. Request Body</a></h4>
+<h4 id="_request_body_6"><a class="anchor" href="#_request_body_6"></a><a class="link" href="#_request_body_6">11.2. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2414,7 +2260,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
 </table>
 </div>
 <div class="sect3">
-<h4 id="_http_response_10"><a class="anchor" href="#_http_response_10"></a><a class="link" href="#_http_response_10">11.3. Http Response</a></h4>
+<h4 id="_http_response_9"><a class="anchor" href="#_http_response_9"></a><a class="link" href="#_http_response_9">11.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2434,7 +2280,7 @@ Content-Length: 166
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_10"><a class="anchor" href="#_response_body_10"></a><a class="link" href="#_response_body_10">11.4. Response Body</a></h4>
+<h4 id="_response_body_9"><a class="anchor" href="#_response_body_9"></a><a class="link" href="#_response_body_9">11.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2483,7 +2329,7 @@ Content-Length: 166
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_10"><a class="anchor" href="#_request_curl_10"></a><a class="link" href="#_request_curl_10">11.5. Request curl</a></h4>
+<h4 id="_request_curl_9"><a class="anchor" href="#_request_curl_9"></a><a class="link" href="#_request_curl_9">11.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/bookStoreInfo' -i -X POST \
@@ -2507,7 +2353,7 @@ Content-Length: 166
 <p>서점 정보를 삭제한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_11"><a class="anchor" href="#_http_request_11"></a><a class="link" href="#_http_request_11">12.1. Http Request</a></h4>
+<h4 id="_http_request_10"><a class="anchor" href="#_http_request_10"></a><a class="link" href="#_http_request_10">12.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /admin/bookStoreInfo HTTP/1.1
@@ -2521,7 +2367,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_body_8"><a class="anchor" href="#_request_body_8"></a><a class="link" href="#_request_body_8">12.2. Request Body</a></h4>
+<h4 id="_request_body_7"><a class="anchor" href="#_request_body_7"></a><a class="link" href="#_request_body_7">12.2. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code></code></pre>
@@ -2529,7 +2375,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_http_response_11"><a class="anchor" href="#_http_response_11"></a><a class="link" href="#_http_response_11">12.3. Http Response</a></h4>
+<h4 id="_http_response_10"><a class="anchor" href="#_http_response_10"></a><a class="link" href="#_http_response_10">12.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2549,7 +2395,7 @@ Content-Length: 166
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_11"><a class="anchor" href="#_response_body_11"></a><a class="link" href="#_response_body_11">12.4. Response Body</a></h4>
+<h4 id="_response_body_10"><a class="anchor" href="#_response_body_10"></a><a class="link" href="#_response_body_10">12.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2598,7 +2444,7 @@ Content-Length: 166
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_11"><a class="anchor" href="#_request_curl_11"></a><a class="link" href="#_request_curl_11">12.5. Request curl</a></h4>
+<h4 id="_request_curl_10"><a class="anchor" href="#_request_curl_10"></a><a class="link" href="#_request_curl_10">12.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/bookStoreInfo' -i -X DELETE</code></pre>
@@ -2614,7 +2460,7 @@ Content-Length: 166
 <p>판매할 책 정보(isbn, 제목, 단가) 정보를 조회한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_12"><a class="anchor" href="#_http_request_12"></a><a class="link" href="#_http_request_12">13.1. Http Request</a></h4>
+<h4 id="_http_request_11"><a class="anchor" href="#_http_request_11"></a><a class="link" href="#_http_request_11">13.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /admin/sell/book/9788966262281 HTTP/1.1
@@ -2628,7 +2474,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_path_parameters_4"><a class="anchor" href="#_path_parameters_4"></a><a class="link" href="#_path_parameters_4">13.2. Path Parameters</a></h4>
+<h4 id="_path_parameters_3"><a class="anchor" href="#_path_parameters_3"></a><a class="link" href="#_path_parameters_3">13.2. Path Parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 3. /admin/sell/book/{isbn}</caption>
 <colgroup>
@@ -2650,7 +2496,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_body_9"><a class="anchor" href="#_request_body_9"></a><a class="link" href="#_request_body_9">13.3. Request Body</a></h4>
+<h4 id="_request_body_8"><a class="anchor" href="#_request_body_8"></a><a class="link" href="#_request_body_8">13.3. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code></code></pre>
@@ -2658,7 +2504,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_http_response_12"><a class="anchor" href="#_http_response_12"></a><a class="link" href="#_http_response_12">13.4. Http Response</a></h4>
+<h4 id="_http_response_11"><a class="anchor" href="#_http_response_11"></a><a class="link" href="#_http_response_11">13.4. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2682,7 +2528,7 @@ Content-Length: 269
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_12"><a class="anchor" href="#_response_body_12"></a><a class="link" href="#_response_body_12">13.5. Response Body</a></h4>
+<h4 id="_response_body_11"><a class="anchor" href="#_response_body_11"></a><a class="link" href="#_response_body_11">13.5. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2745,7 +2591,7 @@ Content-Length: 269
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_12"><a class="anchor" href="#_request_curl_12"></a><a class="link" href="#_request_curl_12">13.6. Request curl</a></h4>
+<h4 id="_request_curl_11"><a class="anchor" href="#_request_curl_11"></a><a class="link" href="#_request_curl_11">13.6. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/sell/book/9788966262281' -i -X GET</code></pre>
@@ -2761,7 +2607,7 @@ Content-Length: 269
 <p>판매내역을 등록한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_13"><a class="anchor" href="#_http_request_13"></a><a class="link" href="#_http_request_13">14.1. Http Request</a></h4>
+<h4 id="_http_request_12"><a class="anchor" href="#_http_request_12"></a><a class="link" href="#_http_request_12">14.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /admin/sell/book HTTP/1.1
@@ -2806,7 +2652,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_body_10"><a class="anchor" href="#_request_body_10"></a><a class="link" href="#_request_body_10">14.2. Request Body</a></h4>
+<h4 id="_request_body_9"><a class="anchor" href="#_request_body_9"></a><a class="link" href="#_request_body_9">14.2. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2887,7 +2733,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
 </table>
 </div>
 <div class="sect3">
-<h4 id="_http_response_13"><a class="anchor" href="#_http_response_13"></a><a class="link" href="#_http_response_13">14.3. Http Response</a></h4>
+<h4 id="_http_response_12"><a class="anchor" href="#_http_response_12"></a><a class="link" href="#_http_response_12">14.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2907,7 +2753,7 @@ Content-Length: 170
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_13"><a class="anchor" href="#_response_body_13"></a><a class="link" href="#_response_body_13">14.4. Response Body</a></h4>
+<h4 id="_response_body_12"><a class="anchor" href="#_response_body_12"></a><a class="link" href="#_response_body_12">14.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -2956,7 +2802,7 @@ Content-Length: 170
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_13"><a class="anchor" href="#_request_curl_13"></a><a class="link" href="#_request_curl_13">14.5. Request curl</a></h4>
+<h4 id="_request_curl_12"><a class="anchor" href="#_request_curl_12"></a><a class="link" href="#_request_curl_12">14.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/sell/book' -i -X POST \
@@ -2987,7 +2833,7 @@ Content-Length: 170
 <p>판매 내역 목록을 조건(금액, 기간)에 따라 조회한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_14"><a class="anchor" href="#_http_request_14"></a><a class="link" href="#_http_request_14">15.1. Http Request</a></h4>
+<h4 id="_http_request_13"><a class="anchor" href="#_http_request_13"></a><a class="link" href="#_http_request_13">15.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /admin/history/type?type=DEFAULT&amp;startDate=2022-10-15T01:49:43.560073&amp;endDate=2022-10-17T01:49:43.560073&amp;price=10000&amp;page=0 HTTP/1.1
@@ -3038,7 +2884,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_http_response_14"><a class="anchor" href="#_http_response_14"></a><a class="link" href="#_http_response_14">15.3. Http Response</a></h4>
+<h4 id="_http_response_13"><a class="anchor" href="#_http_response_13"></a><a class="link" href="#_http_response_13">15.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -3089,7 +2935,7 @@ Content-Length: 836
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_14"><a class="anchor" href="#_response_body_14"></a><a class="link" href="#_response_body_14">15.4. Response Body</a></h4>
+<h4 id="_response_body_13"><a class="anchor" href="#_response_body_13"></a><a class="link" href="#_response_body_13">15.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -3274,7 +3120,7 @@ Content-Length: 836
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_14"><a class="anchor" href="#_request_curl_14"></a><a class="link" href="#_request_curl_14">15.5. Request curl</a></h4>
+<h4 id="_request_curl_13"><a class="anchor" href="#_request_curl_13"></a><a class="link" href="#_request_curl_13">15.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/history/type?type=DEFAULT&amp;startDate=2022-10-15T01:49:43.560073&amp;endDate=2022-10-17T01:49:43.560073&amp;price=10000&amp;page=0' -i -X GET</code></pre>
@@ -3290,7 +3136,7 @@ Content-Length: 836
 <p>판매내역 상세를 조회한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_15"><a class="anchor" href="#_http_request_15"></a><a class="link" href="#_http_request_15">16.1. Http Request</a></h4>
+<h4 id="_http_request_14"><a class="anchor" href="#_http_request_14"></a><a class="link" href="#_http_request_14">16.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /admin/history/3 HTTP/1.1
@@ -3304,7 +3150,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_path_parameters_5"><a class="anchor" href="#_path_parameters_5"></a><a class="link" href="#_path_parameters_5">16.2. Path Parameters</a></h4>
+<h4 id="_path_parameters_4"><a class="anchor" href="#_path_parameters_4"></a><a class="link" href="#_path_parameters_4">16.2. Path Parameters</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 4. /admin/history/{id}</caption>
 <colgroup>
@@ -3326,7 +3172,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_body_11"><a class="anchor" href="#_request_body_11"></a><a class="link" href="#_request_body_11">16.3. Request Body</a></h4>
+<h4 id="_request_body_10"><a class="anchor" href="#_request_body_10"></a><a class="link" href="#_request_body_10">16.3. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code></code></pre>
@@ -3334,7 +3180,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_http_response_15"><a class="anchor" href="#_http_response_15"></a><a class="link" href="#_http_response_15">16.4. Http Response</a></h4>
+<h4 id="_http_response_14"><a class="anchor" href="#_http_response_14"></a><a class="link" href="#_http_response_14">16.4. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -3367,7 +3213,7 @@ Content-Length: 488
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_15"><a class="anchor" href="#_response_body_15"></a><a class="link" href="#_response_body_15">16.5. Response Body</a></h4>
+<h4 id="_response_body_14"><a class="anchor" href="#_response_body_14"></a><a class="link" href="#_response_body_14">16.5. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -3474,7 +3320,7 @@ Content-Length: 488
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_15"><a class="anchor" href="#_request_curl_15"></a><a class="link" href="#_request_curl_15">16.6. Request curl</a></h4>
+<h4 id="_request_curl_14"><a class="anchor" href="#_request_curl_14"></a><a class="link" href="#_request_curl_14">16.6. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/history/3' -i -X GET</code></pre>
@@ -3490,7 +3336,7 @@ Content-Length: 488
 <p>판매 내역 목록을 조회한다.</p>
 </div>
 <div class="sect3">
-<h4 id="_http_request_16"><a class="anchor" href="#_http_request_16"></a><a class="link" href="#_http_request_16">17.1. Http Request</a></h4>
+<h4 id="_http_request_15"><a class="anchor" href="#_http_request_15"></a><a class="link" href="#_http_request_15">17.1. Http Request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /admin/history HTTP/1.1
@@ -3504,7 +3350,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_body_12"><a class="anchor" href="#_request_body_12"></a><a class="link" href="#_request_body_12">17.2. Request Body</a></h4>
+<h4 id="_request_body_11"><a class="anchor" href="#_request_body_11"></a><a class="link" href="#_request_body_11">17.2. Request Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code></code></pre>
@@ -3512,7 +3358,7 @@ Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_http_response_16"><a class="anchor" href="#_http_response_16"></a><a class="link" href="#_http_response_16">17.3. Http Response</a></h4>
+<h4 id="_http_response_15"><a class="anchor" href="#_http_response_15"></a><a class="link" href="#_http_response_15">17.3. Http Response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -3563,7 +3409,7 @@ Content-Length: 831
 </div>
 </div>
 <div class="sect3">
-<h4 id="_response_body_16"><a class="anchor" href="#_response_body_16"></a><a class="link" href="#_response_body_16">17.4. Response Body</a></h4>
+<h4 id="_response_body_15"><a class="anchor" href="#_response_body_15"></a><a class="link" href="#_response_body_15">17.4. Response Body</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code>{
@@ -3748,7 +3594,7 @@ Content-Length: 831
 </table>
 </div>
 <div class="sect3">
-<h4 id="_request_curl_16"><a class="anchor" href="#_request_curl_16"></a><a class="link" href="#_request_curl_16">17.5. Request curl</a></h4>
+<h4 id="_request_curl_15"><a class="anchor" href="#_request_curl_15"></a><a class="link" href="#_request_curl_15">17.5. Request curl</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/sell/book/9788966262281' -i -X GET</code></pre>
@@ -3760,11 +3606,8 @@ Content-Length: 831
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-11-09 22:50:32 +0900
+Last updated 2022-11-09 23:05:19 +0900
 </div>
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-<script>hljs.initHighlighting()</script>
 </body>
 </html>
