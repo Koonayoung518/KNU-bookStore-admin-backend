@@ -7,16 +7,29 @@ endif::[]
 책의 상세 정보를 조회한다.
 
 ==== Http Request
+
 include::{snippets}/book-get/http-request.adoc[]
+
 include::{snippets}/book-get/httpie-request.adoc[]
+
 ==== Path Parameters
+
 include::{snippets}/book-get/path-parameters.adoc[]
+
 ==== Request Body
+
 include::{snippets}/book-get/request-body.adoc[]
+
 ==== Http Response
+
 include::{snippets}/book-get/http-response.adoc[]
+
 ==== Response Body
+
 include::{snippets}/book-get/response-body.adoc[]
+
 include::{snippets}/book-get/response-fields.adoc[]
+
 ==== Request curl
+
 include::{snippets}/book-get/curl-request.adoc[]

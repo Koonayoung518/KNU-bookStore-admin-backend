@@ -7,11 +7,18 @@ endif::[]
 서점 정보를 등록한다.
 
 ==== Http Request
+
+
 include::{snippets}/bookStoreInfo-post/http-request.adoc[]
+
 include::{snippets}/bookStoreInfo-post/httpie-request.adoc[]
+
 ==== Request Body
+
 include::{snippets}/bookStoreInfo-post/request-body.adoc[]
+
 include::{snippets}/bookStoreInfo-post/request-fields.adoc[]
+
 ==== Http Response
 include::{snippets}/bookStoreInfo-post/http-response.adoc[]
 ==== Response Body

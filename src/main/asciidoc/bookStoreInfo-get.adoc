@@ -8,11 +8,13 @@ endif::[]
 
 ==== Http Request
 include::{snippets}/bookStoreInfo-get/http-request.adoc[]
+
 include::{snippets}/bookStoreInfo-get/httpie-request.adoc[]
-==== Request Body
-include::{snippets}/bookStoreInfo-get/request-body.adoc[]
+
 ==== Http Response
 include::{snippets}/bookStoreInfo-get/http-response.adoc[]
+
+
 ==== Response Body
 include::{snippets}/bookStoreInfo-get/response-body.adoc[]
 include::{snippets}/bookStoreInfo-get/response-fields.adoc[]

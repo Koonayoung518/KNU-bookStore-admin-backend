@@ -7,6 +7,7 @@ endif::[]
 판매 내역 목록을 조회한다.
 
 ==== Http Request
+
 include::{snippets}/sell-get-history/http-request.adoc[]
 include::{snippets}/sell-get-history/httpie-request.adoc[]
 ==== Request Body
