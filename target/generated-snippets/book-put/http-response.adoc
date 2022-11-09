@@ -1,0 +1,16 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json;charset=UTF-8
+Content-Length: 156
+
+{
+  "id" : "fbac9699-fcc5-40aa-83a2-a2a3b416b6c0",
+  "dateTime" : "2022-11-09T06:53:20.096+00:00",
+  "message" : "책 수정 성공",
+  "data" : null
+}
+----

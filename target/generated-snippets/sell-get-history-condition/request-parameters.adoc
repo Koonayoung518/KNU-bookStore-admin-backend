@@ -1,0 +1,19 @@
+|===
+|Parameter|Description
+
+|`+type+`
+|검색 타입
+
+|`+price+`
+|검색할 금액
+
+|`+startDate+`
+|검색할 시작 날짜
+
+|`+endDate+`
+|검색할 종료 날짜
+
+|`+page+`
+|page 번호
+
+|===

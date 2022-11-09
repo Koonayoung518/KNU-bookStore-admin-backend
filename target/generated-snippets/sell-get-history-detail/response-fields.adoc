@@ -1,0 +1,56 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+String+`
+|api response 고유 아이디 값
+
+|`+dateTime+`
+|`+String+`
+|response 응답 시간
+
+|`+message+`
+|`+String+`
+|결과메세지
+
+|`+data.sellDate+`
+|`+String+`
+|판매 날짜
+
+|`+data.bookList.[].isbn+`
+|`+String+`
+|isbn
+
+|`+data.bookList.[].title+`
+|`+String+`
+|제목
+
+|`+data.bookList.[].unitPrice+`
+|`+Number+`
+|단가
+
+|`+data.bookList.[].amount+`
+|`+Number+`
+|수량
+
+|`+data.bookList.[].total+`
+|`+Number+`
+|금액
+
+|`+data.payment+`
+|`+String+`
+|결제수단
+
+|`+data.money+`
+|`+Number+`
+|받은 금액
+
+|`+data.change+`
+|`+Number+`
+|거스름돈
+
+|`+data.totalPrice+`
+|`+Number+`
+|총금액
+
+|===

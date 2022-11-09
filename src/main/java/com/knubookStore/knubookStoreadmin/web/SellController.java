@@ -51,8 +51,8 @@ public class SellController {
                 .build());
     }
 
-    @GetMapping("/admin/history/type/{type}")
-    public ResponseEntity<ResponseMessage> getHistoryByCondition(@PathVariable String type,
+    @GetMapping("/admin/history/type")
+    public ResponseEntity<ResponseMessage> getHistoryByCondition(@RequestParam("type") String type,
                                                                  @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
                                                                  @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
                                                                  @RequestParam("price") Integer price,

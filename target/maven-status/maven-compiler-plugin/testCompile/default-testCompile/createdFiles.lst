@@ -1,0 +1,8 @@
+com\knubookStore\knubookStoreadmin\provider\service\SellDocumentationTests.class
+com\knubookStore\knubookStoreadmin\provider\service\BookStoreInfoDocumentationTests.class
+com\knubookStore\knubookStoreadmin\provider\service\BookStoreInfoServiceTests.class
+com\knubookStore\knubookStoreadmin\provider\service\BookDocumentationTests.class
+com\knubookStore\knubookStoreadmin\provider\service\BookServiceTests.class
+com\knubookStore\knubookStoreadmin\provider\service\AdminServiceTests.class
+com\knubookStore\knubookStoreadmin\KnuBookStoreAdminApplicationTests.class
+com\knubookStore\knubookStoreadmin\provider\service\SellServiceTests.class

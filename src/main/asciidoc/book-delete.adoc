@@ -1,0 +1,18 @@
+[[book-delete]]
+== 책 정보 삭제 API
+책 정보를 삭제한다.
+
+==== Http Request
+include::{snippets}/book-delete/http-request.adoc[]
+include::{snippets}/book-delete/httpie-request.adoc[]
+==== Path Parameters
+include::{snippets}/book-delete/path-parameters.adoc[]
+==== Request Body
+include::{snippets}/book-delete/request-body.adoc[]
+==== Http Response
+include::{snippets}/book-delete/http-response.adoc[]
+==== Response Body
+include::{snippets}/book-delete/response-body.adoc[]
+include::{snippets}/book-delete/response-fields.adoc[]
+==== Request curl
+include::{snippets}/book-delete/curl-request.adoc[]

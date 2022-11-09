@@ -1,0 +1,17 @@
+[[sell-post]]
+== 판매내역 등록 API
+판매내역을 등록한다.
+
+==== Http Request
+include::{snippets}/sell-post/http-request.adoc[]
+include::{snippets}/sell-post/httpie-request.adoc[]
+==== Request Body
+include::{snippets}/sell-post/request-body.adoc[]
+include::{snippets}/sell-post/request-fields.adoc[]
+==== Http Response
+include::{snippets}/sell-post/http-response.adoc[]
+==== Response Body
+include::{snippets}/sell-post/response-body.adoc[]
+include::{snippets}/sell-post/response-fields.adoc[]
+==== Request curl
+include::{snippets}/sell-post/curl-request.adoc[]

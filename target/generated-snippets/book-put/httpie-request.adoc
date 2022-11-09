@@ -1,0 +1,10 @@
+[source,bash]
+----
+$ echo '{
+  "isbn" : "9788966262281",
+  "price" : 10000,
+  "stock" : 13
+}' | http PUT 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/manage/book' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'Accept:application/json'
+----

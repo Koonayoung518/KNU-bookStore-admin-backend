@@ -1,0 +1,17 @@
+[[book-post]]
+== 책 등록 API
+책 정보를 등록한다.
+
+==== Http Request
+include::{snippets}/book-post/http-request.adoc[]
+include::{snippets}/book-post/httpie-request.adoc[]
+==== Request Body
+include::{snippets}/book-post/request-body.adoc[]
+include::{snippets}/book-post/request-fields.adoc[]
+==== Http Response
+include::{snippets}/book-post/http-response.adoc[]
+==== Response Body
+include::{snippets}/book-post/response-body.adoc[]
+include::{snippets}/book-post/response-fields.adoc[]
+==== Request curl
+include::{snippets}/book-post/curl-request.adoc[]

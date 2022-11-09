@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http GET 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/history/type?type=DEFAULT&startDate=2022-10-15T01:49:43.560073&endDate=2022-10-17T01:49:43.560073&price=10000&page=0'
+----

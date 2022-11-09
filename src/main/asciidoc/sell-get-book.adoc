@@ -1,0 +1,18 @@
+[[sell-get-book]]
+== 판매할 책 정보 조회 API
+판매할 책 정보(isbn, 제목, 단가) 정보를 조회한다.
+
+==== Http Request
+include::{snippets}/sell-get-book/http-request.adoc[]
+include::{snippets}/sell-get-book/httpie-request.adoc[]
+==== Path Parameters
+include::{snippets}/sell-get-book/path-parameters.adoc[]
+==== Request Body
+include::{snippets}/sell-get-book/request-body.adoc[]
+==== Http Response
+include::{snippets}/sell-get-book/http-response.adoc[]
+==== Response Body
+include::{snippets}/sell-get-book/response-body.adoc[]
+include::{snippets}/sell-get-book/response-fields.adoc[]
+==== Request curl
+include::{snippets}/sell-get-book/curl-request.adoc[]

@@ -1,0 +1,8 @@
+.+/admin/manage/book/{isbn}+
+|===
+|Parameter|Description
+
+|`+isbn+`
+|책 isbn
+
+|===

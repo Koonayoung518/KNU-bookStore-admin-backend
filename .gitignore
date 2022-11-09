@@ -1,9 +1,8 @@
 HELP.md
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+target/test-classes/
 ### STS ###
 .apt_generated
 .classpath
@@ -32,6 +31,9 @@ build/
 ### VS Code ###
 .vscode/
 
+
 ### 비밀키 ###
 secret/
 application-prod.yml
+
+

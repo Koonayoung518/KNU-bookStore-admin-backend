@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+String+`
+|api response 고유 아이디 값
+
+|`+dateTime+`
+|`+String+`
+|response 응답 시간
+
+|`+message+`
+|`+String+`
+|결과메세지
+
+|`+data+`
+|`+Null+`
+|응답 데이터
+
+|===

@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "isbn" : "9788966262281",
+  "price" : 10000,
+  "stock" : 13
+}
+----

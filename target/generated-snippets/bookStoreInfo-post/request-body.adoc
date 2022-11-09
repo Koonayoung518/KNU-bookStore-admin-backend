@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "operatingTime" : "9:00 - 17:00",
+  "phone" : "031-280-2222",
+  "location" : "인사관 1층",
+  "notice" : "수요일에 책 입고됩니다."
+}
+----

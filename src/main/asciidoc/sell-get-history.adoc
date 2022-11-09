@@ -1,0 +1,16 @@
+[[sell-get-history]]
+== 판매 내역 목록 조회 API (Deprecated)
+판매 내역 목록을 조회한다.
+
+==== Http Request
+include::{snippets}/sell-get-history/http-request.adoc[]
+include::{snippets}/sell-get-history/httpie-request.adoc[]
+==== Request Body
+include::{snippets}/sell-get-history/request-body.adoc[]
+==== Http Response
+include::{snippets}/sell-get-history/http-response.adoc[]
+==== Response Body
+include::{snippets}/sell-get-history/response-body.adoc[]
+include::{snippets}/sell-get-history/response-fields.adoc[]
+==== Request curl
+include::{snippets}/sell-get-book/curl-request.adoc[]

@@ -1,0 +1,17 @@
+[[book-put]]
+== 책 정보 수정 API
+책 정보(가격, 재고)를 수정한다.
+
+==== Http Request
+include::{snippets}/book-put/http-request.adoc[]
+include::{snippets}/book-put/httpie-request.adoc[]
+==== Request Body
+include::{snippets}/book-put/request-body.adoc[]
+include::{snippets}/book-put/request-fields.adoc[]
+==== Http Response
+include::{snippets}/book-put/http-response.adoc[]
+==== Response Body
+include::{snippets}/book-put/response-body.adoc[]
+include::{snippets}/book-put/response-fields.adoc[]
+==== Request curl
+include::{snippets}/book-put/curl-request.adoc[]

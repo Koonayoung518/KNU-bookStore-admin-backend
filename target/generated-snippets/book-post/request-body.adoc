@@ -1,0 +1,13 @@
+[source,options="nowrap"]
+----
+{
+  "isbn" : "9788966262281",
+  "title" : "이펙티브 자바",
+  "publisher" : "인사이트",
+  "author" : "조슈아 블로크",
+  "price" : 32400,
+  "image" : "url",
+  "pubdate" : "20181101",
+  "stock" : 3
+}
+----

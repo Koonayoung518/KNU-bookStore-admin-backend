@@ -1,0 +1,6 @@
+[source,http,options="nowrap"]
+----
+GET /admin/history/3 HTTP/1.1
+Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
+
+----

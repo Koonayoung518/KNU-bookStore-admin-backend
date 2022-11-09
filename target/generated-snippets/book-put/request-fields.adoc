@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+isbn+`
+|`+String+`
+|isbn
+
+|`+price+`
+|`+Number+`
+|가격
+
+|`+stock+`
+|`+Number+`
+|재고
+
+|===

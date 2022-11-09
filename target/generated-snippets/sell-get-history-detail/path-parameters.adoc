@@ -1,0 +1,8 @@
+.+/admin/history/{id}+
+|===
+|Parameter|Description
+
+|`+id+`
+|판매내역 번호
+
+|===

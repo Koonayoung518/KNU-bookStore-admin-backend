@@ -5,7 +5,6 @@ import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseMessage;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -40,9 +39,8 @@ public class BookController {
                 .build());
     }
 
-    @GetMapping("/admin/manage/book/title/{title}")
-    public ResponseEntity<ResponseMessage> getBooksByTitle(@PathVariable String title){
-        System.out.println("title "+ title);
+    @GetMapping("/admin/manage/book/title")
+    public ResponseEntity<ResponseMessage> getBooksByTitle(@RequestParam String title){
         List<ResponseBook.BookListDto> list = bookService.getBooksByTitle(title);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
@@ -92,8 +90,9 @@ public class BookController {
                 .build());
     }
 
-    @GetMapping("/book/title/{title}")
-    public ResponseEntity<ResponseMessage> getBooksByTitleToSite(@PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable, @PathVariable String title){
+    @GetMapping("/book/title")
+    public ResponseEntity<ResponseMessage> getBooksByTitleToSite(@PageableDefault(size = 10, sort = "registrationDate", direction = Sort.Direction.DESC) Pageable pageable,
+                                                                 @RequestParam String title){
         Page<ResponseBook.BookDetailListDto> list = bookService.getBooksByTitleToSite(pageable, title);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()

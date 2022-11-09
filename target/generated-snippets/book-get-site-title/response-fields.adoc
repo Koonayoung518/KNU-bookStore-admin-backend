@@ -1,0 +1,120 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+String+`
+|api response 고유 아이디 값
+
+|`+dateTime+`
+|`+String+`
+|response 응답 시간
+
+|`+message+`
+|`+String+`
+|결과메세지
+
+|`+data.content.[].isbn+`
+|`+String+`
+|isbn
+
+|`+data.content.[].title+`
+|`+String+`
+|제목
+
+|`+data.content.[].publisher+`
+|`+String+`
+|출판사
+
+|`+data.content.[].author+`
+|`+String+`
+|작가
+
+|`+data.content.[].price+`
+|`+Number+`
+|가격
+
+|`+data.content.[].image+`
+|`+String+`
+|책 표지 이미지 url
+
+|`+data.content.[].stock+`
+|`+Number+`
+|재고
+
+|`+data.pageable.sort.empty+`
+|`+Boolean+`
+|정렬 비었는지 여부
+
+|`+data.pageable.sort.unsorted+`
+|`+Boolean+`
+|정렬 여부
+
+|`+data.pageable.sort.sorted+`
+|`+Boolean+`
+|정렬 여부
+
+|`+data.pageable.offset+`
+|`+Number+`
+|오프셋
+
+|`+data.pageable.pageNumber+`
+|`+Number+`
+|페이지 번호
+
+|`+data.pageable.pageSize+`
+|`+Number+`
+|페이지 크기
+
+|`+data.pageable.paged+`
+|`+Boolean+`
+|페이지 여부
+
+|`+data.pageable.unpaged+`
+|`+Boolean+`
+|페이지 여부
+
+|`+data.last+`
+|`+Boolean+`
+|마지막 페이지 여부
+
+|`+data.totalPages+`
+|`+Number+`
+|전체 페이지 개수
+
+|`+data.totalElements+`
+|`+Number+`
+|전체 요소 개수
+
+|`+data.size+`
+|`+Number+`
+|한 페이지 당 보여지는 요소 개수
+
+|`+data.number+`
+|`+Number+`
+|요소 개수
+
+|`+data.sort.empty+`
+|`+Boolean+`
+|정렬 비었는지 여부
+
+|`+data.sort.unsorted+`
+|`+Boolean+`
+|정렬 여부
+
+|`+data.sort.sorted+`
+|`+Boolean+`
+|정렬 여부
+
+|`+data.first+`
+|`+Boolean+`
+|첫 페이지 여부
+
+|`+data.numberOfElements+`
+|`+Number+`
+|요소 개수
+
+|`+data.empty+`
+|`+Boolean+`
+|리스트가 비어있는지 여부
+
+|===

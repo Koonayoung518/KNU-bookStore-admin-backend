@@ -1,0 +1,6 @@
+[source,http,options="nowrap"]
+----
+GET /admin/manage/book/title?title=%EC%9E%90%EB%B0%94 HTTP/1.1
+Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
+
+----

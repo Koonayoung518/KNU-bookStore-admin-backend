@@ -1,0 +1,15 @@
+[source,options="nowrap"]
+----
+{
+  "id" : "79a5053a-f9c8-4077-bd13-690303cf76e2",
+  "dateTime" : "2022-11-09T06:53:17.970+00:00",
+  "message" : "책 전체 목록 조회 성공",
+  "data" : [ {
+    "isbn" : "1234",
+    "title" : "제목",
+    "publisher" : "출판사",
+    "image" : "url",
+    "stock" : 3
+  } ]
+}
+----

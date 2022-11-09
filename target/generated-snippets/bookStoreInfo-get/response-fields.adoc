@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+String+`
+|api response 고유 아이디 값
+
+|`+dateTime+`
+|`+String+`
+|response 응답 시간
+
+|`+message+`
+|`+String+`
+|결과메세지
+
+|`+data.operatingTime+`
+|`+String+`
+|운영시간
+
+|`+data.phone+`
+|`+String+`
+|연락처
+
+|`+data.location+`
+|`+String+`
+|위치
+
+|`+data.notice+`
+|`+String+`
+|공지사항
+
+|===

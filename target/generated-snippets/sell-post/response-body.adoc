@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "id" : "cd83d583-e144-457c-bd55-42739e1f1968",
+  "dateTime" : "2022-11-09T06:56:12.299+00:00",
+  "message" : "책 판매 내역 저장 성공",
+  "data" : null
+}
+----

@@ -74,8 +74,9 @@ public class BookStoreInfoServiceTests {
                 .phone("031280~~")
                 .build();
         bookStoreInfoService.registerBookInfo(request);
-        BookStoreInfo bookStoreInfo = bookStoreInfoRepository.findById(1L).orElseThrow(()-> new NotFoundBookStoreInfoException());
-        assertNotNull(bookStoreInfo);
+
+        List<BookStoreInfo> bookStoreInfo = bookStoreInfoRepository.findAll();
+        assertEquals(1, bookStoreInfo.size());
     }
 
     @Test

@@ -9,5 +9,23 @@
 :sectanchors:
 
 == Api Docs
+다음은 교내 서점 사이트 프로젝트의 API 명세서이다.
 
+include::book-post.adoc[]
 include::book-get-all.adoc[]
+include::book-get-title.adoc[]
+include::book-get.adoc[]
+include::book-put.adoc[]
+include::book-delete.adoc[]
+include::book-get-site.adoc[]
+include::book-get-site-title.adoc[]
+
+include::bookStoreInfo-get.adoc[]
+include::bookStoreInfo-post.adoc[]
+include::bookStoreInfo-delete.adoc[]
+
+include::sell-get-book.adoc[]
+include::sell-post.adoc[]
+include::sell-get-history-condition.adoc[]
+include::sell-get-history-detail.adoc[]
+include::sell-get-history.adoc[]

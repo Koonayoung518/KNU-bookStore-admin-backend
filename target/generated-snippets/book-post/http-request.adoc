@@ -1,0 +1,19 @@
+[source,http,options="nowrap"]
+----
+POST /admin/manage/book HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Accept: application/json
+Content-Length: 221
+Host: ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com
+
+{
+  "isbn" : "9788966262281",
+  "title" : "이펙티브 자바",
+  "publisher" : "인사이트",
+  "author" : "조슈아 블로크",
+  "price" : 32400,
+  "image" : "url",
+  "pubdate" : "20181101",
+  "stock" : 3
+}
+----
