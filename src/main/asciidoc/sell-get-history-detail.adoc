@@ -11,8 +11,6 @@ include::{snippets}/sell-get-history-detail/http-request.adoc[]
 include::{snippets}/sell-get-history-detail/httpie-request.adoc[]
 ==== Path Parameters
 include::{snippets}/sell-get-history-detail/path-parameters.adoc[]
-==== Request Body
-include::{snippets}/sell-get-history-detail/request-body.adoc[]
 ==== Http Response
 include::{snippets}/sell-get-history-detail/http-response.adoc[]
 ==== Response Body

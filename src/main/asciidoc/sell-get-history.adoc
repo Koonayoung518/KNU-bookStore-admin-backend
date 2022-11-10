@@ -10,8 +10,6 @@ endif::[]
 
 include::{snippets}/sell-get-history/http-request.adoc[]
 include::{snippets}/sell-get-history/httpie-request.adoc[]
-==== Request Body
-include::{snippets}/sell-get-history/request-body.adoc[]
 ==== Http Response
 include::{snippets}/sell-get-history/http-response.adoc[]
 ==== Response Body

@@ -11,8 +11,6 @@ include::{snippets}/book-delete/http-request.adoc[]
 include::{snippets}/book-delete/httpie-request.adoc[]
 ==== Path Parameters
 include::{snippets}/book-delete/path-parameters.adoc[]
-==== Request Body
-include::{snippets}/book-delete/request-body.adoc[]
 ==== Http Response
 include::{snippets}/book-delete/http-response.adoc[]
 ==== Response Body

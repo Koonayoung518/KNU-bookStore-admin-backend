@@ -14,8 +14,6 @@ include::{snippets}/sell-get-book/httpie-request.adoc[]
 
 ==== Path Parameters
 include::{snippets}/sell-get-book/path-parameters.adoc[]
-==== Request Body
-include::{snippets}/sell-get-book/request-body.adoc[]
 ==== Http Response
 include::{snippets}/sell-get-book/http-response.adoc[]
 ==== Response Body

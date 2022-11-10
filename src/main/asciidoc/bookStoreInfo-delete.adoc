@@ -9,8 +9,6 @@ endif::[]
 ==== Http Request
 include::{snippets}/bookStoreInfo-delete/http-request.adoc[]
 include::{snippets}/bookStoreInfo-delete/httpie-request.adoc[]
-==== Request Body
-include::{snippets}/bookStoreInfo-delete/request-body.adoc[]
 ==== Http Response
 include::{snippets}/bookStoreInfo-delete/http-response.adoc[]
 ==== Response Body

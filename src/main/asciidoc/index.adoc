@@ -9,8 +9,8 @@
 :sectanchors:
 
 == Api Docs
-다음은 교내 서점 사이트 프로젝트의 API 명세서이다.
-
+다음은 교내 서점 사이트 프로젝트의 API 명세서입니다.
+이 문서는 Spring REST Docs를 사용해 작성했습니다.
 
 include::book-get-all.adoc[]
 
