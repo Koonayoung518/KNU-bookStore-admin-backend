@@ -29,8 +29,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
@@ -56,7 +60,7 @@ public class BookStoreInfoDocumentationTests {
     private WebApplicationContext webApplicationContext;
 
     @BeforeEach
-    public void before(RestDocumentationContextProvider restDocumentationContextProvider) {
+    public void setUp(RestDocumentationContextProvider restDocumentationContextProvider) {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
                 .apply(documentationConfiguration(restDocumentationContextProvider))
                 .addFilters(new CharacterEncodingFilter("UTF-8", true))
@@ -73,12 +77,24 @@ public class BookStoreInfoDocumentationTests {
                 .location("인사관 1층")
                 .notice("수요일에 책 입고됩니다.")
                 .build();
+//        String requestBody = "{" +
+//                "        \"operatingTime\": \"9:00 - 17:00\"," +
+//                "        \"phone\": \"031-111-2222\"," +
+//                "        \"location\": \"인사관 1층\"," +
+//                "        \"notice\": \"수요일에 책 입고됩니다.\" " +
+//                "    }";
+//
+//        Map<String, Object> requestDto = new HashMap<>();
+//        requestDto.put("operatingTime", "9:00 - 17:00");
+//        requestDto.put("phone", "031-280-2222");
+//        requestDto.put("location", "인사관 1층");
+//        requestDto.put("notice", "수요일에 책 입고됩니다.");
 
-        ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders
-                .post("/admin/bookStoreInfo")
+        ResultActions result =  this.mockMvc.perform(post("/admin/bookStoreInfo")
                 .content(objectMapper.writeValueAsString(dto))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
+
         );
 
         result.andExpect(MockMvcResultMatchers.status().isOk())
@@ -90,10 +106,10 @@ public class BookStoreInfoDocumentationTests {
                                 .removePort(), prettyPrint()),
                         preprocessResponse(prettyPrint()),
                         requestFields(
-                                fieldWithPath("operatingTime").type(JsonFieldType.STRING).description("운영시간"),
-                                fieldWithPath("phone").type(JsonFieldType.STRING).description("연락처"),
-                                fieldWithPath("location").type(JsonFieldType.STRING).description("위치"),
-                                fieldWithPath("notice").type(JsonFieldType.STRING).description("공지사항")
+                                fieldWithPath("operatingTime").description("운영시간"),
+                                fieldWithPath("phone").description("연락처"),
+                                fieldWithPath("location").description("위치"),
+                                fieldWithPath("notice").description("공지사항")
                         ),
                         responseFields(
                                 fieldWithPath("id").type(JsonFieldType.STRING).description("api response 고유 아이디 값"),

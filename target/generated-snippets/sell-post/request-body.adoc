@@ -1,16 +1,4 @@
 [source,options="nowrap"]
 ----
-{
-  "bookList" : [ {
-    "isbn" : "9788966262281",
-    "title" : "이펙티브 자바",
-    "unitPrice" : 32400,
-    "amount" : 2,
-    "total" : 64800
-  } ],
-  "totalPrice" : 64800,
-  "money" : 70000,
-  "change" : 5200,
-  "payment" : "CASH"
-}
+{"bookList":[{"isbn":"9788966262281","title":"����Ƽ�� �ڹ�","unitPrice":32400,"amount":2,"total":64800}],"totalPrice":64800,"money":70000,"change":5200,"payment":"CASH"}
 ----

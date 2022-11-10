@@ -79,14 +79,23 @@ public class BookDocumentationTests {
                 .pubdate("20181101")
                 .stock(3)
                 .build();
+        Map<String, Object> requestDto = new HashMap<>();
+        requestDto.put("isbn", "9788966262281");
+        requestDto.put("title", "이펙티브 자바");
+        requestDto.put("publisher", "인사이트");
+        requestDto.put("author", "조슈아 블로크");
+        requestDto.put("price", 32400);
+        requestDto.put("image", "url");
+        requestDto.put("pubdate", "20181101");
+        requestDto.put("stock", 3);
 
 
         ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders
                 .post("/admin/manage/book")
-                .content(objectMapper.writeValueAsString(dto))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-        );
+                .content(objectMapper.writeValueAsString(requestDto))
+               );
 
         result.andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())
@@ -166,7 +175,12 @@ public class BookDocumentationTests {
         bookRepository.save(book);
         String title = "자바";
 
-        ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders.get("/admin/manage/book/title?title="+title));
+        ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders
+                        .get("/admin/manage/book/title")
+                        .param("title", title)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                );
 
         result.andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())

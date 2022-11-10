@@ -1,8 +1,8 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : "018fcddb-28b3-406d-a555-c3c6f47f482a",
-  "dateTime" : "2022-11-09T06:56:38.619+00:00",
+  "id" : "132d2a6c-295e-4a6d-8171-fbedf3db4f31",
+  "dateTime" : "2022-11-10T08:53:28.553+00:00",
   "message" : "서점 정보 등록 성공",
   "data" : null
 }

@@ -8,8 +8,8 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 166
 
 {
-  "id" : "784ca2e1-caf6-4325-aef1-8abbbdaa85a8",
-  "dateTime" : "2022-11-09T06:53:22.289+00:00",
+  "id" : "7cab7048-0b1b-4670-821f-f511b9b6e2ae",
+  "dateTime" : "2022-11-10T08:19:03.774+00:00",
   "message" : "서점 정보 삭제 성공",
   "data" : null
 }

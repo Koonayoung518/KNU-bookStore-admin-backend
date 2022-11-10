@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.knubookStore.knubookStoreadmin.provider.service.SellDocumentationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.451 s <<< FAILURE! - in com.knubookStore.knubookStoreadmin.provider.service.SellDocumentationTests
+판매내역_저장_API_명세서_등록  Time elapsed: 1.411 s  <<< ERROR!
+org.springframework.restdocs.payload.PayloadHandlingException: Cannot handle application/json;charset=UTF-8 content as it could not be parsed as JSON or XML
+	at com.knubookStore.knubookStoreadmin.provider.service.SellDocumentationTests.판매내역_저장_API_명세서_등록(SellDocumentationTests.java:219)
+

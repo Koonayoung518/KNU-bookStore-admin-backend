@@ -8,8 +8,8 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 269
 
 {
-  "id" : "e9792204-d8e2-4290-a128-0e73937c1ab5",
-  "dateTime" : "2022-11-09T06:53:23.048+00:00",
+  "id" : "e23c5478-ad5b-496c-be11-f08377dda185",
+  "dateTime" : "2022-11-10T08:19:04.771+00:00",
   "message" : "판매할 책 정보 조회 성공",
   "data" : {
     "isbn" : "9788966262281",

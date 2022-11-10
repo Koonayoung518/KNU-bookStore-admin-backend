@@ -209,10 +209,10 @@ public class SellDocumentationTests {
 
         ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders
                 .post("/admin/sell/book")
-                .content(objectMapper.writeValueAsString(dto))
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-        );
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(dto))
+                 );
 
         result.andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())

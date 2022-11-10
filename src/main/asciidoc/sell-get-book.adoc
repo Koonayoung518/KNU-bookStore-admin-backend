@@ -7,8 +7,12 @@ endif::[]
 판매할 책 정보(isbn, 제목, 단가) 정보를 조회한다.
 
 ==== Http Request
-include::{snippets}/sell-get-book/http-request.adoc[]
-include::{snippets}/sell-get-book/httpie-request.adoc[]
+
+operation::sell-get-book[snippets='http-request,httpie-request']
+//
+//include::{snippets}/sell-get-book/http-request.adoc[]
+//include::{snippets}/sell-get-book/httpie-request.adoc[]
+
 ==== Path Parameters
 include::{snippets}/sell-get-book/path-parameters.adoc[]
 ==== Request Body

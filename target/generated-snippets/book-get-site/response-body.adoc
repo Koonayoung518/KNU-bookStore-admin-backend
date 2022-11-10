@@ -1,8 +1,8 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : "f5eb86fe-6173-480d-b700-e29c101e318e",
-  "dateTime" : "2022-11-09T06:53:18.785+00:00",
+  "id" : "fa2f0ce7-133c-447c-be95-8b803ac95409",
+  "dateTime" : "2022-11-10T08:19:00.904+00:00",
   "message" : "사이트용 책 조회 성공",
   "data" : {
     "content" : [ {
@@ -17,24 +17,24 @@
     "pageable" : {
       "sort" : {
         "empty" : false,
-        "unsorted" : false,
-        "sorted" : true
+        "sorted" : true,
+        "unsorted" : false
       },
       "offset" : 0,
-      "pageSize" : 10,
       "pageNumber" : 0,
-      "paged" : true,
-      "unpaged" : false
+      "pageSize" : 10,
+      "unpaged" : false,
+      "paged" : true
     },
-    "totalElements" : 1,
     "last" : true,
+    "totalElements" : 1,
     "totalPages" : 1,
     "size" : 10,
     "number" : 0,
     "sort" : {
       "empty" : false,
-      "unsorted" : false,
-      "sorted" : true
+      "sorted" : true,
+      "unsorted" : false
     },
     "first" : true,
     "numberOfElements" : 1,
