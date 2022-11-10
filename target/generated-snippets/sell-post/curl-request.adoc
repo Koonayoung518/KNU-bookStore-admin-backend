@@ -3,5 +3,17 @@
 $ curl 'http://ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com/admin/sell/book' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'Accept: application/json' \
-    -d '{"bookList":[{"isbn":"9788966262281","title":"����Ƽ�� �ڹ�","unitPrice":32400,"amount":2,"total":64800}],"totalPrice":64800,"money":70000,"change":5200,"payment":"CASH"}'
+    -d '{
+  "bookList" : [ {
+    "isbn" : "9788966262281",
+    "title" : "title",
+    "unitPrice" : 32400,
+    "amount" : 2,
+    "total" : 64800
+  } ],
+  "totalPrice" : 64800,
+  "money" : 70000,
+  "change" : 5200,
+  "payment" : "CASH"
+}'
 ----

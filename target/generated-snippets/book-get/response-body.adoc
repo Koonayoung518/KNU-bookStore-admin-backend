@@ -1,11 +1,11 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : "75843c18-632a-4097-852a-5b8b90d80bbb",
-  "dateTime" : "2022-11-10T08:19:02.213+00:00",
+  "id" : "2eaf50fb-78d9-4604-a414-ab52684c2f18",
+  "dateTime" : "2022-11-10T09:48:34.862+00:00",
   "message" : "책 조회 성공",
   "data" : {
-    "registrationDate" : "2022-11-10T17:19:02.2010857",
+    "registrationDate" : "2022-11-10T18:48:34.8513963",
     "isbn" : "9788966262281",
     "title" : "이펙티브 자바",
     "publisher" : "인사이트",

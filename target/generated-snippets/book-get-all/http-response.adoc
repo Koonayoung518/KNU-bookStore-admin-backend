@@ -8,8 +8,8 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 294
 
 {
-  "id" : "1755a178-1a31-423d-be7c-ce00bcf80943",
-  "dateTime" : "2022-11-10T08:19:00.302+00:00",
+  "id" : "87e9d7a6-9728-4f24-a8ca-919b189b358f",
+  "dateTime" : "2022-11-10T09:48:33.308+00:00",
   "message" : "책 전체 목록 조회 성공",
   "data" : [ {
     "isbn" : "1234",

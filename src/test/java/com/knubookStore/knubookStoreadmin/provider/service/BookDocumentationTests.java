@@ -71,33 +71,22 @@ public class BookDocumentationTests {
 
         RequestBook.RegisterBookDto dto = RequestBook.RegisterBookDto.builder()
                 .isbn("9788966262281")
-                .title("이펙티브 자바")
-                .publisher("인사이트")
-                .author("조슈아 블로크")
+                .title("title")
+                .publisher("publisher")
+                .author("author")
                 .price(32400)
                 .image("url")
                 .pubdate("20181101")
                 .stock(3)
                 .build();
-        Map<String, Object> requestDto = new HashMap<>();
-        requestDto.put("isbn", "9788966262281");
-        requestDto.put("title", "이펙티브 자바");
-        requestDto.put("publisher", "인사이트");
-        requestDto.put("author", "조슈아 블로크");
-        requestDto.put("price", 32400);
-        requestDto.put("image", "url");
-        requestDto.put("pubdate", "20181101");
-        requestDto.put("stock", 3);
 
 
-        ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders
+        mockMvc.perform(RestDocumentationRequestBuilders
                 .post("/admin/manage/book")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(requestDto))
-               );
-
-        result.andExpect(MockMvcResultMatchers.status().isOk())
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())
                 .andDo(document("book-post",
                         preprocessRequest(modifyUris()

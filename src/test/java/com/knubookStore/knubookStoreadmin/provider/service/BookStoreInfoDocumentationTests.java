@@ -74,21 +74,9 @@ public class BookStoreInfoDocumentationTests {
         RequestBookStoreInfo.RegisterBookStoreInfoDto dto = RequestBookStoreInfo.RegisterBookStoreInfoDto.builder()
                 .operatingTime("9:00 - 17:00")
                 .phone("031-280-2222")
-                .location("인사관 1층")
-                .notice("수요일에 책 입고됩니다.")
+                .location("location")
+                .notice("notice")
                 .build();
-//        String requestBody = "{" +
-//                "        \"operatingTime\": \"9:00 - 17:00\"," +
-//                "        \"phone\": \"031-111-2222\"," +
-//                "        \"location\": \"인사관 1층\"," +
-//                "        \"notice\": \"수요일에 책 입고됩니다.\" " +
-//                "    }";
-//
-//        Map<String, Object> requestDto = new HashMap<>();
-//        requestDto.put("operatingTime", "9:00 - 17:00");
-//        requestDto.put("phone", "031-280-2222");
-//        requestDto.put("location", "인사관 1층");
-//        requestDto.put("notice", "수요일에 책 입고됩니다.");
 
         ResultActions result =  this.mockMvc.perform(post("/admin/bookStoreInfo")
                 .content(objectMapper.writeValueAsString(dto))

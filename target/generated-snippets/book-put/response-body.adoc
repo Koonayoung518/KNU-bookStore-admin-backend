@@ -1,8 +1,8 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : "b7da6525-61cb-41b6-83a8-3ba31a4825b9",
-  "dateTime" : "2022-11-10T08:19:01.949+00:00",
+  "id" : "f66856cf-9d8c-48a6-829a-314be714db7b",
+  "dateTime" : "2022-11-10T09:48:34.647+00:00",
   "message" : "책 수정 성공",
   "data" : null
 }

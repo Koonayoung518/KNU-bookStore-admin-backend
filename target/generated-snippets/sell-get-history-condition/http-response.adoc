@@ -8,13 +8,13 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 836
 
 {
-  "id" : "7b5a5ae2-a342-41a8-b26a-fa37ce2ba4c3",
-  "dateTime" : "2022-11-10T08:19:04.549+00:00",
+  "id" : "8bf27652-7613-4274-adc2-6a7646d7a946",
+  "dateTime" : "2022-11-10T09:48:36.939+00:00",
   "message" : "판매 내역 목록 조건 조회 성공",
   "data" : {
     "content" : [ {
       "id" : 2,
-      "sellDate" : "2022-11-10T17:19:04.4882573",
+      "sellDate" : "2022-11-10T18:48:36.8654225",
       "totalPrice" : 64800
     } ],
     "pageable" : {
@@ -24,8 +24,8 @@ Content-Length: 836
         "unsorted" : false
       },
       "offset" : 0,
-      "pageNumber" : 0,
       "pageSize" : 5,
+      "pageNumber" : 0,
       "unpaged" : false,
       "paged" : true
     },

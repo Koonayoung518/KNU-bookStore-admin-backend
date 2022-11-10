@@ -178,9 +178,9 @@ public class SellDocumentationTests {
     void 판매내역_저장_API_명세서_등록() throws Exception{
         Book book = Book.builder()
                 .isbn("9788966262281")
-                .title("이펙티브 자바")
-                .publisher("인사이트")
-                .author("조슈아 블로크")
+                .title("title")
+                .publisher("publisher")
+                .author("author")
                 .price(32400)
                 .image("url")
                 .pubdate("20181101")
@@ -192,7 +192,7 @@ public class SellDocumentationTests {
         List<BookInfo> list = new ArrayList<>();
         BookInfo bookInfo = BookInfo.builder()
                 .isbn("9788966262281")
-                .title("이펙티브 자바")
+                .title("title")
                 .amount(2)
                 .unitPrice(32400)
                 .total(64800)

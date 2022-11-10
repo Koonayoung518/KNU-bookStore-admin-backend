@@ -1,8 +1,8 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : "d491e0ba-af37-47a0-822e-7c00f2842a93",
-  "dateTime" : "2022-11-10T08:19:03.653+00:00",
+  "id" : "f1061a94-dfe3-477f-b880-c08d4f11efdb",
+  "dateTime" : "2022-11-10T09:48:36.290+00:00",
   "message" : "서점 정보 조회 성공",
   "data" : {
     "operatingTime" : "9:00 - 17:00",

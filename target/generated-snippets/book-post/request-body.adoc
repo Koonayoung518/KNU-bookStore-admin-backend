@@ -1,4 +1,13 @@
 [source,options="nowrap"]
 ----
-{"image":"url","author":"������ ���ũ","price":32400,"isbn":"9788966262281","publisher":"�λ���Ʈ","title":"����Ƽ�� �ڹ�","stock":3,"pubdate":"20181101"}
+{
+  "isbn" : "9788966262281",
+  "title" : "title",
+  "publisher" : "publisher",
+  "author" : "author",
+  "price" : 32400,
+  "image" : "url",
+  "pubdate" : "20181101",
+  "stock" : 3
+}
 ----
