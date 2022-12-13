@@ -69,6 +69,7 @@ public class BookService {
                     .build();
         } catch (IOException e) {
             System.out.println("파싱 실패");
+            throw new CustomException(ErrorCode.NOT_FOUND_BOOK);
         }
 
         return responseBook;
