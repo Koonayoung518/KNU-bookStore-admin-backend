@@ -1,19 +1,16 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knubookStore.knubookStoreadmin.entity.Book;
+import com.knubookStore.knubookStoreadmin.exception.errors.CustomException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
-import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -22,17 +19,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ActiveProfiles("test")
 @SpringBootTest
-@AutoConfigureMockMvc
-@AutoConfigureRestDocs
 public class BookServiceTests {
     @Autowired
     BookService bookService;
     @Autowired
     BookRepository bookRepository;
-    @Autowired
-    private MockMvc mockMvc;
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Test
     @DisplayName("책 조회(네이버) 테스트")
@@ -92,12 +83,18 @@ public class BookServiceTests {
                 .isbn("9788965402602")
                 .build();
         bookRepository.save(book);
-        Book book1 = Book.builder()
-                .isbn("9788960777330")
-                .build();
-        bookRepository.save(book1);
         //책 삭제
-        bookService.deleteBook("9788960777330");
+        bookService.deleteBook("9788965402602");
+        assertNull(bookRepository.findByIsbn("9788965402602"));
+    }
+
+    @Test
+    @DisplayName("책 삭제 테스트(실패 - 책이 없는 경우)")
+    @Transactional
+    void deleteBookTestWhenNotExistBook(){
+        assertThatThrownBy(()-> bookService.deleteBook("9788960777330"))
+                .isInstanceOf(CustomException.class)
+                .hasMessageContaining("NOT_FOUND_BOOK");
         assertNull(bookRepository.findByIsbn("9788960777330"));
     }
 
