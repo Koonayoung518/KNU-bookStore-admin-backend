@@ -1,4 +1,4 @@
-package com.knubookStore.knubookStoreadmin.exception.errors;
+package com.knubookStore.knubookStoreadmin.exception;
 
 import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
 import lombok.Getter;

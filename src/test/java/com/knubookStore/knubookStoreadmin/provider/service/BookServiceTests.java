@@ -2,7 +2,7 @@ package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
-import com.knubookStore.knubookStoreadmin.exception.errors.CustomException;
+import com.knubookStore.knubookStoreadmin.exception.CustomException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBook;

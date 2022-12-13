@@ -5,9 +5,8 @@ import com.knubookStore.knubookStoreadmin.core.Type.SearchType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import com.knubookStore.knubookStoreadmin.entity.History;
 import com.knubookStore.knubookStoreadmin.entity.Sell;
-import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
-import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundHistoryException;
-import com.knubookStore.knubookStoreadmin.exception.errors.SellFailedException;
+import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
+import com.knubookStore.knubookStoreadmin.exception.CustomException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
 import com.knubookStore.knubookStoreadmin.repository.SellRepository;
@@ -24,10 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAdjuster;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -36,24 +33,24 @@ public class SellService {
     private final SellRepository sellRepository;
     private final HistoryRepository historyRepository;
 
-    @Transactional
-    public Optional<ResponseSell.BookDto> getSellBook(String isbn){
+    @Transactional(readOnly = true)
+    public ResponseSell.BookDto getSellBook(String isbn) {
         Book book = bookRepository.findByIsbn(isbn);
-        if(book == null){// 책이 없을 경우
-            throw new NotFoundBookException();
+        if (book == null) {
+            throw new CustomException(ErrorCode.NOT_FOUND_BOOK);
         }
         ResponseSell.BookDto response = ResponseSell.BookDto.builder()
                 .isbn(book.getIsbn())
                 .title(book.getTitle())
                 .unitPrice(book.getPrice())
                 .build();
-        return Optional.ofNullable(response);
+        return response;
     }
 
     @Transactional
-    public void sellBook(RequestSell.RegisterSellBookHistoryDto requestDto){
-        if(requestDto.getBookList().isEmpty()){
-            throw new SellFailedException();
+    public void sellBook(RequestSell.RegisterSellBookHistoryDto requestDto) {
+        if (requestDto.getBookList().isEmpty()) {
+            throw new CustomException(ErrorCode.SELL_BOOK_FAILED);
         }
         History history = History.builder()
                 .sellDate(LocalDateTime.now())
@@ -64,10 +61,10 @@ public class SellService {
                 .build();
         history = historyRepository.save(history);
 
-        for (BookInfo bookInfo : requestDto.getBookList()){
+        for (BookInfo bookInfo : requestDto.getBookList()) {
             Book book = bookRepository.findByIsbn(bookInfo.getIsbn());
-            if(book == null){// 책이 없을 경우
-                throw new NotFoundBookException();
+            if (book == null) {// 책이 없을 경우
+                throw new CustomException(ErrorCode.NOT_FOUND_BOOK);
             }
             //책 수량 변경
             book.updateStock(book.getStock() - bookInfo.getAmount());
@@ -86,20 +83,19 @@ public class SellService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ResponseSell.HistoryDto> getAllHistory(){
-        Pageable sortedBySellDateDesc = PageRequest.of(0,10, Sort.by("sellDate").descending());
+    public Page<ResponseSell.HistoryDto> getAllHistory() {
+        Pageable sortedBySellDateDesc = PageRequest.of(0, 10, Sort.by("sellDate").descending());
         Page<History> historyList = historyRepository.findAll(sortedBySellDateDesc);
         return historyList.map(ResponseSell.HistoryDto::of);
     }
 
     @Transactional(readOnly = true)
-    public ResponseSell.HistoryDetailDto getHistoryDetail(Long id){
-        History history = historyRepository.findById(id).orElseThrow(()->new NotFoundHistoryException());
+    public ResponseSell.HistoryDetailDto getHistoryDetail(Long id) {
+        History history = historyRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_HISTORY));
         List<BookInfo> bookInfoList = new ArrayList<>();
-        for(Sell item : history.getSellList()){
-            BookInfo bookInfo = BookInfo.of(item);
-            bookInfoList.add(bookInfo);
-        }
+
+        history.getSellList().stream().forEach(sell -> bookInfoList.add(BookInfo.of(sell)));
+
         ResponseSell.HistoryDetailDto responseDto = ResponseSell.HistoryDetailDto.builder()
                 .sellDate(history.getSellDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")))
                 .bookList(bookInfoList)
@@ -113,11 +109,11 @@ public class SellService {
 
     @Transactional(readOnly = true)
     public Page<ResponseSell.HistoryDto> getHistoryByCondition(SearchType type, LocalDateTime startDate, LocalDateTime endDate,
-                                                               Integer price, Pageable pageable){
+                                                               Integer price, Pageable pageable) {
         Page<History> historyList;
         switch (type) {
             case DATE:
-                 historyList = historyRepository.findByHistoryByDate(pageable, startDate.toLocalDate().atTime(0,0), endDate.toLocalDate().atTime(0,0).plusDays(1));
+                historyList = historyRepository.findByHistoryByDate(pageable, startDate.toLocalDate().atTime(0, 0), endDate.toLocalDate().atTime(0, 0).plusDays(1));
                 break;
             case PRICE:
                 historyList = historyRepository.findByHistoryByPrice(pageable, price);

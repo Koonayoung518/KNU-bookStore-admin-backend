@@ -1,6 +1,7 @@
 package com.knubookStore.knubookStoreadmin.interceptor;
 
-import com.knubookStore.knubookStoreadmin.exception.errors.CustomJwtRuntimeException;
+import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
+import com.knubookStore.knubookStoreadmin.exception.CustomException;
 import com.knubookStore.knubookStoreadmin.provider.security.JwtAuthToken;
 import com.knubookStore.knubookStoreadmin.provider.security.JwtAuthTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,8 @@ public class AuthInterceptor implements HandlerInterceptor {
             if(jwtAuthToken.validate()){ //유효하면
                 return true;
             }
-            throw new CustomJwtRuntimeException();
+            throw new CustomException(ErrorCode.AUTHENTICATION_FAILED);
         }
-        throw new CustomJwtRuntimeException();
+        throw new CustomException(ErrorCode.AUTHENTICATION_FAILED);
     }
 }

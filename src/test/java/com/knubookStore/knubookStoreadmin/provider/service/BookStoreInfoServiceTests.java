@@ -1,10 +1,8 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
-import com.knubookStore.knubookStoreadmin.entity.Book;
 import com.knubookStore.knubookStoreadmin.entity.BookStoreInfo;
 import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
-import com.knubookStore.knubookStoreadmin.exception.errors.CustomException;
-import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookStoreInfoException;
+import com.knubookStore.knubookStoreadmin.exception.CustomException;
 import com.knubookStore.knubookStoreadmin.repository.BookStoreInfoRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBookStoreInfo;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBookStoreInfo;

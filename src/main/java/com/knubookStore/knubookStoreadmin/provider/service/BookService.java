@@ -1,18 +1,10 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.core.Type.BookType;
-import com.knubookStore.knubookStoreadmin.core.Type.PaymentType;
 import com.knubookStore.knubookStoreadmin.entity.Book;
-import com.knubookStore.knubookStoreadmin.entity.History;
-import com.knubookStore.knubookStoreadmin.entity.Sell;
 import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
-import com.knubookStore.knubookStoreadmin.exception.errors.BookDuplicatedException;
-import com.knubookStore.knubookStoreadmin.exception.errors.CustomException;
-import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
-import com.knubookStore.knubookStoreadmin.exception.errors.SellFailedException;
+import com.knubookStore.knubookStoreadmin.exception.CustomException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
-import com.knubookStore.knubookStoreadmin.repository.HistoryRepository;
-import com.knubookStore.knubookStoreadmin.repository.SellRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;

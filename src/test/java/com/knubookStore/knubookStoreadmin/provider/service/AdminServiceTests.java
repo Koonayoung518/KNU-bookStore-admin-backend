@@ -44,7 +44,7 @@ public class AdminServiceTests {
                 .build();
         adminService.register(request);
         //로그인
-        ResponseAdmin.Token token = adminService.login(request).get();
+        ResponseAdmin.Token token = adminService.login(request);
         assertNotNull(token);
     }
 }

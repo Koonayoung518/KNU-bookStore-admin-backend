@@ -1,7 +1,6 @@
 package com.knubookStore.knubookStoreadmin.web;
 
 import com.knubookStore.knubookStoreadmin.core.Type.SearchType;
-import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookException;
 import com.knubookStore.knubookStoreadmin.provider.service.SellService;
 import com.knubookStore.knubookStoreadmin.web.dto.*;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,8 +29,8 @@ public class SellController {
     }
 
     @GetMapping("/admin/sell/book/{isbn}")
-    public ResponseEntity<ResponseMessage> getSellBook(@PathVariable String isbn){
-        ResponseSell.BookDto book = sellService.getSellBook(isbn).orElseThrow(()-> new NotFoundBookException());
+    public ResponseEntity<ResponseMessage> getSellBook(@PathVariable String isbn) {
+        ResponseSell.BookDto book = sellService.getSellBook(isbn);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
                 .message("판매할 책 정보 조회 성공")
@@ -42,7 +39,7 @@ public class SellController {
     }
 
     @GetMapping("/admin/history")
-    public ResponseEntity<ResponseMessage> getAllHistory(){
+    public ResponseEntity<ResponseMessage> getAllHistory() {
         Page<ResponseSell.HistoryDto> response = sellService.getAllHistory();
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
@@ -56,14 +53,14 @@ public class SellController {
                                                                  @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
                                                                  @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
                                                                  @RequestParam("price") Integer price,
-                                                                 @PageableDefault(size=5, sort="sellDate", direction = Sort.Direction.DESC) Pageable pageable){
+                                                                 @PageableDefault(size = 5, sort = "sellDate", direction = Sort.Direction.DESC) Pageable pageable) {
         SearchType searchType = null;
-        try{
+        try {
             searchType = SearchType.valueOf(type);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             searchType = SearchType.DEFAULT;
         }
-        Page<ResponseSell.HistoryDto> response = sellService.getHistoryByCondition(searchType,startDate, endDate, price, pageable);
+        Page<ResponseSell.HistoryDto> response = sellService.getHistoryByCondition(searchType, startDate, endDate, price, pageable);
 
         return ResponseEntity.ok().body(ResponseMessage.builder()
                 .message("판매 내역 목록 조건 조회 성공")
@@ -72,7 +69,7 @@ public class SellController {
     }
 
     @GetMapping("/admin/history/{id}")
-    public ResponseEntity<ResponseMessage> getHistoryDetail(@PathVariable Long id){
+    public ResponseEntity<ResponseMessage> getHistoryDetail(@PathVariable Long id) {
         ResponseSell.HistoryDetailDto response = sellService.getHistoryDetail(id);
         return ResponseEntity.ok().body(ResponseMessage.builder()
                 .message("판매 내역 상세 조회 성공")
@@ -81,7 +78,7 @@ public class SellController {
     }
 
     @GetMapping("/dev")
-    public String dev(){
+    public String dev() {
         System.out.println("dev 실행");
         return "dev test 실행";
     }
