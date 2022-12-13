@@ -1,6 +1,7 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.entity.Book;
+import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
 import com.knubookStore.knubookStoreadmin.exception.errors.CustomException;
 import com.knubookStore.knubookStoreadmin.repository.BookRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBook;
@@ -28,15 +29,16 @@ public class BookServiceTests {
     @Test
     @DisplayName("책 조회(네이버) 테스트")
     @Transactional
-    void getBookTest(){
+    void getBookTest() {
         String isbn = "9788965402602";
         ResponseBook.BookDto getBook = bookService.getBook(isbn);
         assertNotNull(getBook);
     }
+
     @Test
     @DisplayName("책 조회 테스트(이미 등록된 책)")
     @Transactional
-    void getBookWhenRegisteredTest(){
+    void getBookWhenRegisteredTest() {
         String isbn = "9788965402602";
         Book book = Book.builder()
                 .isbn("9788965402602")
@@ -51,7 +53,7 @@ public class BookServiceTests {
     @Test
     @DisplayName("책 전체 조회 테스트(이미 등록된 책)")
     @Transactional
-    void getAllBookTest(){
+    void getAllBookTest() {
         Book book = Book.builder()
                 .isbn("9788965402602")
                 .build();
@@ -63,10 +65,11 @@ public class BookServiceTests {
         List<ResponseBook.BookListDto> getBook = bookService.getAllBook();
         System.out.println(getBook);
     }
+
     @Test
     @DisplayName("책 등록 테스트")
     @Transactional
-    void registerBookTest(){
+    void registerBookTest() {
         String isbn = "9788965402602";
         RequestBook.RegisterBookDto registerBook = RequestBook.RegisterBookDto
                 .builder()
@@ -75,10 +78,11 @@ public class BookServiceTests {
         bookService.registerBook(registerBook);
         assertNotNull(bookRepository.findByIsbn(isbn));
     }
+
     @Test
     @DisplayName("책 삭제 테스트")
     @Transactional
-    void deleteBookTest(){
+    void deleteBookTest() {
         Book book = Book.builder()
                 .isbn("9788965402602")
                 .build();
@@ -91,17 +95,17 @@ public class BookServiceTests {
     @Test
     @DisplayName("책 삭제 테스트(실패 - 책이 없는 경우)")
     @Transactional
-    void deleteBookTestWhenNotExistBook(){
-        assertThatThrownBy(()-> bookService.deleteBook("9788960777330"))
+    void deleteBookTestWhenNotExistBook() {
+        assertThatThrownBy(() -> bookService.deleteBook("9788960777330"))
                 .isInstanceOf(CustomException.class)
-                .hasMessageContaining("NOT_FOUND_BOOK");
+                .hasMessageContaining(ErrorCode.NOT_FOUND_BOOK.getMessage());
         assertNull(bookRepository.findByIsbn("9788960777330"));
     }
 
     @Test
     @DisplayName("책 제목으로 목록 조회 테스트")
     @Transactional
-    void getBooksByTitle(){
+    void getBooksByTitle() {
         Book book = Book.builder()
                 .isbn("9788965402602")
                 .title("가나다")
@@ -124,8 +128,8 @@ public class BookServiceTests {
         List<ResponseBook.BookListDto> list = bookService.getBooksByTitle("가나");
         assertEquals(2, list.size());
 
-        for(ResponseBook.BookListDto bookListDto :list){
+        for (ResponseBook.BookListDto bookListDto : list) {
             System.out.println(bookListDto.getTitle());
         }
     }
-        }
+}

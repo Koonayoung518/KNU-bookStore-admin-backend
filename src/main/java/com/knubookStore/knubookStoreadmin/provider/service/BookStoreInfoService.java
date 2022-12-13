@@ -1,7 +1,9 @@
 package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.entity.BookStoreInfo;
+import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
 import com.knubookStore.knubookStoreadmin.exception.errors.BookStoreInfoDuplicatedException;
+import com.knubookStore.knubookStoreadmin.exception.errors.CustomException;
 import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookStoreInfoException;
 import com.knubookStore.knubookStoreadmin.repository.BookStoreInfoRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBookStoreInfo;
@@ -19,14 +21,13 @@ public class BookStoreInfoService {
     private final BookStoreInfoRepository bookStoreInfoRepository;
 
     @Transactional
-    public void registerBookInfo(RequestBookStoreInfo.RegisterBookStoreInfoDto requestDto){
+    public void registerBookInfo(RequestBookStoreInfo.RegisterBookStoreInfoDto requestDto) {
         List<BookStoreInfo> bookStoreInfoList = bookStoreInfoRepository.findAll();
-        if(bookStoreInfoList.size()>0) //기본 정보가 이미 있을 경우
+        if (bookStoreInfoList.size() > 0) //기본 정보가 이미 있을 경우
         {
             bookStoreInfoList.get(0).updateBookStoreInfo(requestDto.getOperatingTime(),
                     requestDto.getPhone(), requestDto.getLocation(), requestDto.getNotice());
-        }
-        else {
+        } else {
             BookStoreInfo bookStoreInfo = BookStoreInfo.builder()
                     .operatingTime(requestDto.getOperatingTime())
                     .phone(requestDto.getPhone())
@@ -37,11 +38,12 @@ public class BookStoreInfoService {
 
         }
     }
+
     @Transactional(readOnly = true)
-    public ResponseBookStoreInfo.BookStoreInfoDto getBookInfo(){
+    public ResponseBookStoreInfo.BookStoreInfoDto getBookInfo() {
         ResponseBookStoreInfo.BookStoreInfoDto response = null;
         List<BookStoreInfo> bookStoreInfoList = bookStoreInfoRepository.findAll();
-        if(bookStoreInfoList.size() != 0){
+        if (bookStoreInfoList.size() != 0) {
             BookStoreInfo bookStoreInfo = bookStoreInfoList.get(0);
             response = ResponseBookStoreInfo.BookStoreInfoDto.builder()
                     .operatingTime(bookStoreInfo.getOperatingTime())
@@ -50,14 +52,14 @@ public class BookStoreInfoService {
                     .notice(bookStoreInfo.getNotice())
                     .build();
         }
-        return  response;
+        return response;
     }
 
     @Transactional
-    public void deleteBookInfo(){
+    public void deleteBookInfo() {
         List<BookStoreInfo> bookStoreInfoList = bookStoreInfoRepository.findAll();
-        if(bookStoreInfoList.size() == 0){
-            throw new NotFoundBookStoreInfoException();
+        if (bookStoreInfoList.size() == 0) {
+            throw new CustomException(ErrorCode.NOT_FOUND_BOOKSTORE_INFO);
         }
         BookStoreInfo bookStoreInfo = bookStoreInfoList.get(0);
         bookStoreInfoRepository.delete(bookStoreInfo);

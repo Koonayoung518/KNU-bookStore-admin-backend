@@ -2,10 +2,14 @@ package com.knubookStore.knubookStoreadmin.provider.service;
 
 import com.knubookStore.knubookStoreadmin.entity.Book;
 import com.knubookStore.knubookStoreadmin.entity.BookStoreInfo;
+import com.knubookStore.knubookStoreadmin.exception.ErrorCode;
+import com.knubookStore.knubookStoreadmin.exception.errors.CustomException;
 import com.knubookStore.knubookStoreadmin.exception.errors.NotFoundBookStoreInfoException;
 import com.knubookStore.knubookStoreadmin.repository.BookStoreInfoRepository;
 import com.knubookStore.knubookStoreadmin.web.dto.RequestBookStoreInfo;
 import com.knubookStore.knubookStoreadmin.web.dto.ResponseBookStoreInfo;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +32,7 @@ public class BookStoreInfoServiceTests {
     @Test
     @Transactional
     @DisplayName("정보 등록 테스트(성공)")
-    void registerBookStoreInfoTest(){
+    void registerBookStoreInfoTest() {
         RequestBookStoreInfo.RegisterBookStoreInfoDto request = RequestBookStoreInfo.RegisterBookStoreInfoDto.builder()
                 .operatingTime("9:00-17:00")
                 .location("인사관")
@@ -44,7 +48,7 @@ public class BookStoreInfoServiceTests {
     @Test
     @Transactional
     @DisplayName("정보 등록 테스트(성공 - 이미 정보가 있을 경우)")
-    void registerBookStoreInfoTestWhenExistInfo(){
+    void registerBookStoreInfoTestWhenExistInfo() {
         BookStoreInfo register = BookStoreInfo.builder()
                 .operatingTime("9:00-17:00")
                 .location("인사관")
@@ -67,7 +71,7 @@ public class BookStoreInfoServiceTests {
     @Test
     @Transactional
     @DisplayName("정보 등록 테스트(성공 - 공지 없을 경우)")
-    void registerBookStoreInfoTestWhenNotNotice(){
+    void registerBookStoreInfoTestWhenNotNotice() {
         RequestBookStoreInfo.RegisterBookStoreInfoDto request = RequestBookStoreInfo.RegisterBookStoreInfoDto.builder()
                 .operatingTime("9:00-17:00")
                 .location("바뀐 위치")
@@ -82,7 +86,7 @@ public class BookStoreInfoServiceTests {
     @Test
     @Transactional
     @DisplayName("정보 조회 테스트(성공)")
-    void getBookStoreInfoTest(){
+    void getBookStoreInfoTest() {
         BookStoreInfo register = BookStoreInfo.builder()
                 .operatingTime("9:00-17:00")
                 .location("인사관")
@@ -92,12 +96,12 @@ public class BookStoreInfoServiceTests {
         bookStoreInfoRepository.save(register);
         ResponseBookStoreInfo.BookStoreInfoDto response = bookStoreInfoService.getBookInfo();
         assertNotNull(response);
-        }
+    }
 
     @Test
     @Transactional
     @DisplayName("정보 삭제 테스트(성공)")
-    void deleteBookStoreInfoTest(){
+    void deleteBookStoreInfoTest() {
         BookStoreInfo register = BookStoreInfo.builder()
                 .operatingTime("9:00-17:00")
                 .location("인사관")
@@ -107,5 +111,15 @@ public class BookStoreInfoServiceTests {
         bookStoreInfoRepository.save(register);
         bookStoreInfoService.deleteBookInfo();
         assertEquals(0, bookStoreInfoRepository.findAll().size());
-        }
+    }
+
+    @Test
+    @Transactional
+    @DisplayName("정보 삭제 테스트(실패-정보가 없을 경우)")
+    void deleteBookStoreInfoTestWhenNotExist() {
+        assertThatThrownBy(() -> bookStoreInfoService.deleteBookInfo())
+                .isInstanceOf(CustomException.class)
+                .hasMessageContaining(ErrorCode.NOT_FOUND_BOOKSTORE_INFO.getMessage());
+    }
+
 }
