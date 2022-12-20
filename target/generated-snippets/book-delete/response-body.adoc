@@ -1,8 +1,8 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : "33a5f623-6b2a-4cb1-b8d5-f4ed4e93957a",
-  "dateTime" : "2022-11-10T09:48:34.762+00:00",
+  "id" : "3bb48c29-86b4-4e52-b813-e97ab73a3891",
+  "dateTime" : "2022-12-20T07:40:46.404+00:00",
   "message" : "책 삭제 성공",
   "data" : null
 }

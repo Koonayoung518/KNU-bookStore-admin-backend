@@ -8,11 +8,11 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 480
 
 {
-  "id" : "2eaf50fb-78d9-4604-a414-ab52684c2f18",
-  "dateTime" : "2022-11-10T09:48:34.862+00:00",
+  "id" : "f5937d01-3052-495c-b7af-92b1d42ae0d6",
+  "dateTime" : "2022-12-20T07:40:46.463+00:00",
   "message" : "책 조회 성공",
   "data" : {
-    "registrationDate" : "2022-11-10T18:48:34.8513963",
+    "registrationDate" : "2022-12-20T16:40:46.4563211",
     "isbn" : "9788966262281",
     "title" : "이펙티브 자바",
     "publisher" : "인사이트",

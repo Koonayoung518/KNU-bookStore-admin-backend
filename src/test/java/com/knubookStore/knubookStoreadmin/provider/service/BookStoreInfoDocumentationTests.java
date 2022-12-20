@@ -70,7 +70,7 @@ public class BookStoreInfoDocumentationTests {
 
     @Test
     @Transactional
-    void 서점_정보_등록_API_명세서_등록() throws Exception{
+    void 서점_정보_등록_API_명세서_등록() throws Exception {
         RequestBookStoreInfo.RegisterBookStoreInfoDto dto = RequestBookStoreInfo.RegisterBookStoreInfoDto.builder()
                 .operatingTime("9:00 - 17:00")
                 .phone("031-280-2222")
@@ -78,21 +78,12 @@ public class BookStoreInfoDocumentationTests {
                 .notice("notice")
                 .build();
 
-        ResultActions result =  this.mockMvc.perform(post("/admin/bookStoreInfo")
+        this.mockMvc.perform(post("/admin/bookStoreInfo")
                 .content(objectMapper.writeValueAsString(dto))
                 .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-
-        );
-
-        result.andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(print())
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(document("bookStoreInfo-post",
-                        preprocessRequest(modifyUris()
-                                .scheme("http")
-                                .host("ec2-43-200-118-169.ap-northeast-2.compute.amazonaws.com")
-                                .removePort(), prettyPrint()),
-                        preprocessResponse(prettyPrint()),
                         requestFields(
                                 fieldWithPath("operatingTime").description("운영시간"),
                                 fieldWithPath("phone").description("연락처"),
@@ -110,7 +101,7 @@ public class BookStoreInfoDocumentationTests {
 
     @Test
     @Transactional
-    void 서점_정보_조회_API_명세서_등록() throws Exception{
+    void 서점_정보_조회_API_명세서_등록() throws Exception {
         BookStoreInfo bookStoreInfo = BookStoreInfo.builder()
                 .operatingTime("9:00 - 17:00")
                 .phone("031-280-2222")
@@ -119,7 +110,7 @@ public class BookStoreInfoDocumentationTests {
                 .build();
         bookStoreInfoRepository.save(bookStoreInfo);
 
-        ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders.get("/bookStoreInfo"));
+        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.get("/bookStoreInfo"));
 
         result.andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())
@@ -143,7 +134,7 @@ public class BookStoreInfoDocumentationTests {
 
     @Test
     @Transactional
-    void 서점_정보_삭제_API_명세서_등록() throws Exception{
+    void 서점_정보_삭제_API_명세서_등록() throws Exception {
         BookStoreInfo bookStoreInfo = BookStoreInfo.builder()
                 .operatingTime("9:00 - 17:00")
                 .phone("031-280-2222")
@@ -152,7 +143,7 @@ public class BookStoreInfoDocumentationTests {
                 .build();
         bookStoreInfoRepository.save(bookStoreInfo);
 
-        ResultActions result =  mockMvc.perform(RestDocumentationRequestBuilders.delete("/admin/bookStoreInfo"));
+        ResultActions result = mockMvc.perform(RestDocumentationRequestBuilders.delete("/admin/bookStoreInfo"));
 
         result.andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())

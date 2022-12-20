@@ -1,9 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "operatingTime" : "9:00 - 17:00",
-  "phone" : "031-280-2222",
-  "location" : "location",
-  "notice" : "notice"
-}
-----

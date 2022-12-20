@@ -1,8 +1,8 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : "d41bb091-a479-4019-a897-0cc17c886c42",
-  "dateTime" : "2022-11-10T09:48:33.841+00:00",
+  "id" : "af9d4e4d-0eca-44c4-81f7-d47d33b737be",
+  "dateTime" : "2022-12-20T07:40:45.962+00:00",
   "message" : "사이트용 책 조회 성공",
   "data" : {
     "content" : [ {
@@ -27,8 +27,8 @@
       "paged" : true
     },
     "last" : true,
-    "totalElements" : 1,
     "totalPages" : 1,
+    "totalElements" : 1,
     "size" : 10,
     "number" : 0,
     "sort" : {

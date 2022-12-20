@@ -8,8 +8,8 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 156
 
 {
-  "id" : "f66856cf-9d8c-48a6-829a-314be714db7b",
-  "dateTime" : "2022-11-10T09:48:34.647+00:00",
+  "id" : "67c01569-7143-4c8b-8aa0-7cb301d79c9f",
+  "dateTime" : "2022-12-20T07:40:46.337+00:00",
   "message" : "책 수정 성공",
   "data" : null
 }

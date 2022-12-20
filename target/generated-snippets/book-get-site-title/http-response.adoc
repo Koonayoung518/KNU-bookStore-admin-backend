@@ -8,8 +8,8 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 970
 
 {
-  "id" : "2bb384a5-2bd7-4406-a3d7-fee356d61b3f",
-  "dateTime" : "2022-11-10T09:48:34.051+00:00",
+  "id" : "de507eb4-3cfe-456e-9e57-f6954bc54428",
+  "dateTime" : "2022-12-20T07:40:46.056+00:00",
   "message" : "사이트용 제목 기반 책 목록 조회 성공",
   "data" : {
     "content" : [ {
@@ -34,8 +34,8 @@ Content-Length: 970
       "paged" : true
     },
     "last" : true,
-    "totalElements" : 1,
     "totalPages" : 1,
+    "totalElements" : 1,
     "size" : 10,
     "number" : 0,
     "sort" : {
