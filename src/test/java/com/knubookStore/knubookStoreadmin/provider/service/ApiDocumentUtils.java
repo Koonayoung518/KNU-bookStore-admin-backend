@@ -27,6 +27,8 @@ public interface ApiDocumentUtils {
                 fieldWithPath("message").type(JsonFieldType.STRING).description("결과메세지"),
                 fieldWithPath("data").type(JsonFieldType.NULL).description("응답 데이터")
         };
+
+
         return responseMessage;
     }
 
